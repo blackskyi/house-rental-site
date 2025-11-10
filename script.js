@@ -1,7 +1,6 @@
 // Configuration
 const CONFIG = {
-    // Replace with your Google Apps Script Web App URL
-    APPS_SCRIPT_URL: 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE',
+    APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxg-tNtejAoXsJPhMVqDjlP95dRKbIZ50HEyZzCJLgr0V5JUmeXZ5c6EEqP0okUl9Pf/exec',
     RECIPIENT_EMAIL: 'gokulprasannak@gmail.com'
 };
 
