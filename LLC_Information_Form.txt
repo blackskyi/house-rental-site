@@ -1,0 +1,465 @@
+===============================================================================
+                    LLC FORMATION - INFORMATION COLLECTION FORM
+===============================================================================
+
+INSTRUCTIONS:
+Please fill in all the information below. Replace the text in [BRACKETS] with
+your actual information. Save this file and share it back with me.
+
+For sensitive information like SSN, you can provide it later during actual filing.
+
+===============================================================================
+
+SECTION 1: BUSINESS DETAILS
+===============================================================================
+
+1.1 LLC NAME (Must end with "LLC" or "Limited Liability Company"):
+
+    Preferred Name Option 1: [e.g., PropRental LLC]
+
+    Preferred Name Option 2: [Alternative name]
+
+    Preferred Name Option 3: [Another alternative]
+
+
+1.2 PRIMARY BUSINESS ADDRESS:
+
+    Street Address: [123 Main Street, Apt 4B]
+
+    City: [Your City]
+
+    State: [CA, NY, TX, etc.]
+
+    ZIP Code: [12345]
+
+
+1.3 BUSINESS PURPOSE (Brief description):
+
+    [e.g., Real estate rental services, property management platform,
+     and related rental housing services]
+
+
+1.4 REGISTERED AGENT (Person/service to receive legal documents):
+
+    Will use Managing Member as registered agent? [YES / NO]
+
+    If NO, provide registered agent service name: [____________]
+
+
+===============================================================================
+
+SECTION 2: YOUR INFORMATION (Member B - F-1 OPT Student)
+===============================================================================
+
+2.1 PERSONAL DETAILS:
+
+    Full Legal Name: [Your full name as on passport]
+
+    Date of Birth: [MM/DD/YYYY]
+
+    Current Address: [Street, City, State, ZIP]
+
+    Email Address: [your.email@example.com]
+
+    Phone Number: [Your phone number]
+
+
+2.2 IMMIGRATION STATUS:
+
+    Current Visa Status: [F-1 Student Visa]
+
+    OPT Status: [Pre-completion OPT / Post-completion OPT]
+
+    OPT Start Date: [MM/DD/YYYY]
+
+    OPT End Date: [MM/DD/YYYY]
+
+    Current School/University: [University name]
+
+    DSO Name (Designated School Official): [If known]
+
+    DSO Email: [If known]
+
+
+2.3 EDUCATION:
+
+    Degree Program: [Bachelor's / Master's / PhD]
+
+    Field of Study/Major: [e.g., Computer Science, Business Administration,
+                           Engineering, etc.]
+
+    Graduation Date: [MM/DD/YYYY or Expected: MM/DD/YYYY]
+
+
+2.4 DESIRED ROLE IN LLC:
+
+    Job Title (must relate to your degree):
+    [e.g., Operations Manager, Software Developer, Marketing Director,
+     Business Analyst, Property Technology Specialist]
+
+    Brief Job Description:
+    [What will you actually do? e.g., "Oversee platform development,
+     manage property listings, coordinate with landlords and tenants"]
+
+    Desired Annual Salary: $[50,000 - 80,000 recommended range]
+
+    Full-time or Part-time: [Full-time (40 hrs/week) / Part-time (20 hrs/week)]
+
+
+2.5 OWNERSHIP:
+
+    Desired Ownership Percentage: [40% recommended]
+
+    Initial Capital Contribution: $[Amount you will invest, e.g., $1,000]
+
+
+===============================================================================
+
+SECTION 3: PARTNER INFORMATION (Member A - Green Card Holder)
+===============================================================================
+
+3.1 PERSONAL DETAILS:
+
+    Full Legal Name: [Partner's full legal name]
+
+    Date of Birth: [MM/DD/YYYY]
+
+    Current Address: [Street, City, State, ZIP]
+
+    Email Address: [partner.email@example.com]
+
+    Phone Number: [Partner's phone number]
+
+    Social Security Number: [XXX-XX-XXXX]
+                            (Can provide later - needed for EIN application)
+
+
+3.2 IMMIGRATION STATUS:
+
+    Status: [Green Card Holder / Legal Permanent Resident]
+
+    Green Card Number: [Can provide later if preferred]
+
+
+3.3 RELATIONSHIP TO YOU:
+
+    Relationship: [Family member / Friend / Spouse / Business Associate]
+
+    How long have you known them: [X years]
+
+
+3.4 ROLE IN LLC:
+
+    Title: [Managing Member / CEO / President]
+
+    Will they be actively involved in operations? [YES / NO / LIMITED]
+
+    If LIMITED, explain: [e.g., "Final decision authority only,
+                           day-to-day handled by Member B"]
+
+
+3.5 OWNERSHIP:
+
+    Desired Ownership Percentage: [60% recommended for compliance]
+
+    Initial Capital Contribution: $[Amount partner will invest]
+
+
+===============================================================================
+
+SECTION 4: OWNERSHIP & FINANCIAL STRUCTURE
+===============================================================================
+
+4.1 OWNERSHIP SPLIT (Must total 100%):
+
+    Member A (Green Card Holder): [60]%
+
+    Member B (You - F-1 OPT): [40]%
+
+    TOTAL: 100%
+
+
+4.2 INITIAL CAPITAL:
+
+    Member A Contribution: $[________]
+
+    Member B Contribution: $[________]
+
+    Total Initial Capital: $[________]
+
+    When will capital be contributed: [At formation / Within 30 days / Other]
+
+
+4.3 PROFIT DISTRIBUTION (While you're on F-1 OPT):
+
+    Member B (You) will receive: [SALARY ONLY - No profit distributions]
+
+    All profits after expenses/salary go to: [Member A until Member B has
+                                              H-1B or Green Card]
+
+
+4.4 FUTURE PROFIT DISTRIBUTION (After you get H-1B/Green Card):
+
+    Distribute according to ownership %? [YES / NO]
+
+    Member A: [60]%
+    Member B: [40]%
+
+
+===============================================================================
+
+SECTION 5: EMPLOYMENT TERMS (For F-1 OPT Compliance)
+===============================================================================
+
+5.1 YOUR EMPLOYMENT DETAILS:
+
+    Start Date: [MM/DD/YYYY - should be soon after LLC formation]
+
+    Annual Salary: $[________]
+
+    Payment Schedule: [Bi-weekly / Monthly / Semi-monthly]
+
+    Benefits (if any): [Health insurance / None / Other: ________]
+
+    Vacation Days: [__ days per year]
+
+    Work Schedule: [Full-time 40 hrs/week / Part-time __ hrs/week]
+
+
+5.2 JOB RESPONSIBILITIES (Be specific - must match your degree):
+
+    Primary Duties:
+    1. [e.g., Develop and maintain rental platform website]
+    2. [e.g., Coordinate property listings and tenant applications]
+    3. [e.g., Manage customer relationships and communications]
+    4. [e.g., Analyze rental market data and pricing strategies]
+    5. [e.g., Other duties as assigned by Managing Member]
+
+
+5.3 REPORTING:
+
+    Direct Supervisor: [Member A - Managing Member]
+
+    Performance Review Schedule: [Quarterly / Annually]
+
+
+===============================================================================
+
+SECTION 6: STATE SELECTION & FILING
+===============================================================================
+
+6.1 WHERE TO FORM LLC:
+
+    State for LLC Formation: [CA / NY / TX / FL / DE / WY / Other: _____]
+
+    Why this state? [e.g., "We live here" / "Lower fees" / "Business privacy"]
+
+
+6.2 DO BUSINESS IN OTHER STATES?
+
+    Will you operate in multiple states? [YES / NO]
+
+    If YES, which states: [List states where you'll have customers/operations]
+
+
+6.3 FILING PREFERENCES:
+
+    How quickly do you need this filed? [ASAP / Within 1 week / Within 1 month]
+
+    Budget for formation costs: $[500 - 2,000+ depending on state and services]
+
+
+===============================================================================
+
+SECTION 7: BANKING & TAX
+===============================================================================
+
+7.1 BUSINESS BANKING:
+
+    Preferred Bank: [Chase / Bank of America / Wells Fargo / Other: ______]
+
+    Will you need business credit card? [YES / NO]
+
+
+7.2 ACCOUNTING:
+
+    Will you hire accountant/CPA? [YES / NO / UNDECIDED]
+
+    Accounting software preference: [QuickBooks / Wave / Xero / None yet]
+
+
+7.3 TAX ELECTION:
+
+    LLC Tax Status: [Default (Partnership) / S-Corp / C-Corp]
+
+    Note: Recommend starting as Partnership (default), can elect S-Corp later
+
+
+===============================================================================
+
+SECTION 8: BUSINESS OPERATIONS
+===============================================================================
+
+8.1 BUSINESS MODEL:
+
+    How will the business make money?
+    [e.g., "16% commission on rental bookings through our platform"]
+
+    Expected monthly revenue (estimate): $[________]
+
+    Expected monthly expenses (estimate): $[________]
+
+
+8.2 TARGET LAUNCH DATE:
+
+    When do you want to start taking customers? [MM/DD/YYYY]
+
+
+8.3 EXISTING OPERATIONS:
+
+    Do you already have customers/revenue? [YES / NO]
+
+    If YES, how much revenue so far: $[________]
+
+    If YES, where is this money currently? [Personal account / Other]
+
+
+===============================================================================
+
+SECTION 9: LEGAL PROTECTIONS & BUYOUT TERMS
+===============================================================================
+
+9.1 BUYOUT PROVISIONS:
+
+    If one member wants to buy out the other, how to determine price?
+    [Fair Market Value / Multiple of Revenue / Appraisal / Other: ______]
+
+
+9.2 EQUITY VESTING (For your 40% ownership):
+
+    Should your equity vest over time? [YES / NO]
+
+    If YES, vesting schedule: [4 years with 1-year cliff / Other: ______]
+
+    Note: This protects both parties if partnership doesn't work out
+
+
+9.3 RIGHT OF FIRST REFUSAL:
+
+    If one member wants to sell their shares, must they offer to the other
+    member first? [YES / NO]
+
+
+9.4 DISPUTE RESOLUTION:
+
+    How to handle disputes: [Mediation / Arbitration / Court / Other]
+
+
+===============================================================================
+
+SECTION 10: ADDITIONAL INFORMATION
+===============================================================================
+
+10.1 SPECIAL REQUIREMENTS:
+
+    Any special clauses or requirements for the Operating Agreement?
+    [Describe any unique needs or concerns]
+
+
+10.2 TIMELINE:
+
+    When do you need all documents completed? [Date: MM/DD/YYYY]
+
+    When do you plan to file with the state? [Date: MM/DD/YYYY]
+
+
+10.3 ATTORNEY REVIEW:
+
+    Will you have an attorney review these documents? [YES / NO / MAYBE]
+
+    Will you have immigration attorney review? [YES / NO / MAYBE]
+
+    Note: STRONGLY RECOMMENDED for F-1 compliance
+
+
+===============================================================================
+
+SECTION 11: CHECKLIST - DOCUMENTS YOU'LL NEED TO PROVIDE
+===============================================================================
+
+When filing, you'll need these documents. Check what you currently have:
+
+MEMBER B (You - F-1 OPT):
+[ ] Copy of Passport
+[ ] Copy of I-20 form
+[ ] Copy of EAD Card (Employment Authorization Document)
+[ ] Copy of I-94 (Arrival/Departure Record)
+[ ] Social Security Number or ITIN
+[ ] Government-issued ID (Driver's License or State ID)
+
+MEMBER A (Green Card Holder):
+[ ] Copy of Green Card (front and back)
+[ ] Copy of Social Security Card or number
+[ ] Government-issued ID (Driver's License or Passport)
+
+BUSINESS:
+[ ] Proof of business address (lease/utility bill)
+[ ] Initial capital contribution (bank statements showing funds)
+[ ] Business plan or description (optional but helpful)
+
+
+===============================================================================
+
+SIGNATURE & CONFIRMATION
+===============================================================================
+
+By filling out this form, I confirm that:
+
+1. All information provided is accurate and truthful
+2. I understand this is for informational purposes only
+3. I will consult with immigration attorney before finalizing
+4. I understand F-1 OPT employment restrictions
+5. I have read and understand the proposed LLC structure
+
+Your Name: [_____________________]
+
+Date: [___________]
+
+Partner's Name: [_____________________]
+
+Date: [___________]
+
+
+===============================================================================
+                              END OF FORM
+===============================================================================
+
+NEXT STEPS AFTER COMPLETING THIS FORM:
+
+1. Fill out all sections above
+2. Save this file
+3. Share it back with me
+4. I will draft:
+   - Articles of Organization
+   - Operating Agreement (15-20 pages)
+   - Employment Agreement
+   - EIN Application
+   - Banking checklist
+   - OPT compliance guide
+
+5. You review documents
+6. Have attorney review (RECOMMENDED)
+7. File with state
+8. Get EIN from IRS
+9. Open business bank account
+10. Report employment to school DSO
+11. Start operating!
+
+===============================================================================
+
+QUESTIONS? Note them here and we'll discuss:
+
+[Your questions or concerns]
+
+
+===============================================================================

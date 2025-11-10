@@ -1,0 +1,380 @@
+═══════════════════════════════════════════════════════════════════════════
+                         PROPERTY OWNER AGREEMENT
+                          [Platform Name] Rental Platform
+═══════════════════════════════════════════════════════════════════════════
+
+This Agreement is entered into on [DATE] between:
+
+PLATFORM OPERATOR:
+Name: [Your LLC Name]
+Address: [Your Address]
+Email: [Your Platform Email]
+(Hereinafter referred to as "Platform")
+
+AND
+
+PROPERTY OWNER:
+Name: [Owner Name]
+Address: [Owner Address]
+Email: [Owner Email]
+Phone: [Owner Phone]
+(Hereinafter referred to as "Owner")
+
+═══════════════════════════════════════════════════════════════════════════
+                                  RECITALS
+═══════════════════════════════════════════════════════════════════════════
+
+WHEREAS, Platform operates a rental property listing service that connects
+property owners with prospective tenants;
+
+WHEREAS, Owner desires to list their property(ies) on the Platform to attract
+qualified tenants;
+
+WHEREAS, Platform will market Owner's property(ies) and facilitate tenant
+applications through its website and services;
+
+NOW, THEREFORE, in consideration of the mutual covenants and agreements
+contained herein, the parties agree as follows:
+
+═══════════════════════════════════════════════════════════════════════════
+                            1. SERVICES PROVIDED
+═══════════════════════════════════════════════════════════════════════════
+
+1.1 Platform Services
+Platform agrees to provide the following services:
+
+   a) List Owner's property(ies) on Platform's website
+   b) Market and advertise the property(ies) to prospective tenants
+   c) Collect and process rental applications
+   d) Conduct initial screening of applicants
+   e) Facilitate communication between Owner and qualified applicants
+   f) Provide application forms and documentation
+   g) Track all leads generated through the Platform
+
+1.2 Owner Responsibilities
+Owner agrees to:
+
+   a) Provide accurate property information and photos
+   b) Update availability status promptly
+   c) Respond to qualified applicant inquiries within 48 hours
+   d) Conduct property viewings for Platform-referred applicants
+   e) Notify Platform immediately upon accepting any applicant
+   f) Provide honest feedback about applicants when requested
+   g) Maintain property in rentable condition
+
+═══════════════════════════════════════════════════════════════════════════
+                         2. COMMISSION STRUCTURE
+═══════════════════════════════════════════════════════════════════════════
+
+2.1 Commission Rate
+Owner agrees to pay Platform a commission of SIXTEEN PERCENT (16%) of the
+first year's gross rent for any tenant sourced through the Platform.
+
+2.2 Commission Calculation Examples:
+   - Monthly rent $1,000 × 12 months = $12,000 annual rent
+   - Platform commission: $12,000 × 16% = $1,920
+
+2.3 When Commission is Due
+Commission is due when ANY of the following occurs:
+
+   a) Owner enters into a lease agreement with an applicant referred by Platform
+   b) Owner rents to ANY member of applicant's stated party/household
+   c) Owner rents to the applicant through any arrangement (formal or informal)
+   d) Owner accepts payment or deposits from Platform-referred applicant
+
+2.4 Commission Lookback Period
+Commission applies to any rental within TWELVE (12) MONTHS from the date of
+initial Platform referral, regardless of whether:
+   - Owner removed property from Platform
+   - Applicant contacted Owner directly after initial Platform introduction
+   - Rental occurred through different channels or intermediaries
+
+═══════════════════════════════════════════════════════════════════════════
+                        3. LEAD TRACKING & PROTECTION
+═══════════════════════════════════════════════════════════════════════════
+
+3.1 Tracking System
+Platform assigns a unique Tracking ID to each applicant referral. This ID
+appears on:
+   - Application PDFs
+   - All email correspondence
+   - Platform records
+
+3.2 Platform Records
+Platform maintains detailed records of all referrals including:
+   - Applicant name, contact information
+   - Property viewed/applied for
+   - Date and time of application
+   - All correspondence between parties
+   - Viewing schedules and outcomes
+
+3.3 Owner Acknowledgment
+By accepting referrals from Platform, Owner acknowledges that:
+   - Platform is the procuring cause of the introduction
+   - Commission is owed regardless of how final rental is arranged
+   - Records maintained by Platform constitute evidence of referral
+
+3.4 Circumvention Prohibited
+Owner agrees NOT to:
+   - Contact applicants outside Platform communication channels
+   - Remove property from Platform to avoid commission after referrals received
+   - Encourage applicants to bypass Platform
+   - Claim applicant found property through other means if Platform referral exists
+
+═══════════════════════════════════════════════════════════════════════════
+                           4. PAYMENT TERMS
+═══════════════════════════════════════════════════════════════════════════
+
+4.1 Payment Due Date
+Commission payment is due within SEVEN (7) DAYS of:
+   - Lease signing with Platform-referred tenant, OR
+   - Receipt of first month's rent + deposit from tenant
+   - Whichever occurs first
+
+4.2 Payment Method
+Payment shall be made by:
+   [ ] Check payable to: [Your LLC Name]
+   [ ] Bank transfer to: [Your Bank Details]
+   [ ] Venmo/Zelle: [Your Payment Handle]
+   [ ] Other: ___________________
+
+4.3 Late Payment
+Late payments are subject to:
+   - 1.5% monthly interest on unpaid balance
+   - Collection costs and attorney fees if legal action required
+
+4.4 Invoice Process
+Platform will provide invoice including:
+   - Tracking ID of referred applicant
+   - Property address
+   - Tenant name
+   - Lease term and monthly rent
+   - Commission calculation
+   - Payment due date
+
+═══════════════════════════════════════════════════════════════════════════
+                         5. LISTING INFORMATION
+═══════════════════════════════════════════════════════════════════════════
+
+5.1 Property Details
+Owner authorizes Platform to list the following property(ies):
+
+PROPERTY #1:
+Address: _________________________________________________________
+Type: ______________ Bedrooms: _____ Bathrooms: _____
+Monthly Rent: $__________ Deposit: $__________
+Available Date: __________
+Special Features: ________________________________________________
+
+PROPERTY #2 (if applicable):
+Address: _________________________________________________________
+Type: ______________ Bedrooms: _____ Bathrooms: _____
+Monthly Rent: $__________ Deposit: $__________
+Available Date: __________
+Special Features: ________________________________________________
+
+5.2 Photo/Video Rights
+Owner grants Platform non-exclusive right to use provided photos and videos
+for marketing purposes on Platform website and promotional materials.
+
+5.3 Information Accuracy
+Owner warrants that all information provided is accurate and agrees to update
+Platform immediately if any details change.
+
+═══════════════════════════════════════════════════════════════════════════
+                        6. EXCLUSIVE REFERRAL PERIOD
+═══════════════════════════════════════════════════════════════════════════
+
+6.1 Protected Period
+Once Platform refers an applicant to Owner, that applicant is "protected" for
+12 months, meaning commission is owed if Owner rents to them within that time.
+
+6.2 Multiple Owners
+If applicant views multiple Platform-listed properties and rents one, commission
+is owed only on the property rented (to that specific owner).
+
+6.3 Future Referrals
+If tenant relationship ends and Platform refers the SAME person again for a
+different property, a NEW commission applies (as a new referral).
+
+═══════════════════════════════════════════════════════════════════════════
+                          7. COMMUNICATION PROTOCOL
+═══════════════════════════════════════════════════════════════════════════
+
+7.1 Initial Contact
+All initial applicant contact MUST go through Platform email to ensure proper
+tracking and documentation.
+
+7.2 Viewing Arrangements
+Owner may communicate directly with applicant to schedule viewings ONLY AFTER:
+   - Platform forwards applicant's availability
+   - Owner responds to Platform with preferred time
+   - Platform confirms with applicant
+
+7.3 Ongoing Communication
+After initial introduction, Owner may communicate directly with applicant for:
+   - Property viewing logistics
+   - Application questions
+   - Lease negotiations
+
+7.4 Final Outcome Notification
+Owner MUST notify Platform within 24 hours when:
+   - Lease is signed with Platform applicant
+   - Applicant is rejected (with reason)
+   - Property is rented to someone else
+   - Property is removed from market
+
+═══════════════════════════════════════════════════════════════════════════
+                            8. TERM & TERMINATION
+═══════════════════════════════════════════════════════════════════════════
+
+8.1 Agreement Term
+This Agreement begins on the date signed and continues until terminated by
+either party.
+
+8.2 Termination Rights
+Either party may terminate this Agreement with THIRTY (30) DAYS written notice.
+
+8.3 Effect of Termination
+Upon termination:
+   - Platform will remove Owner's active listings
+   - Commission is still owed for any applicants referred BEFORE termination
+   - 12-month lookback period continues for all prior referrals
+   - Owner may not circumvent commission by timing termination
+
+8.4 Survival Clause
+Sections 2 (Commission), 3 (Lead Tracking), 4 (Payment), and 9 (Dispute
+Resolution) survive termination of this Agreement.
+
+═══════════════════════════════════════════════════════════════════════════
+                         9. DISPUTE RESOLUTION
+═══════════════════════════════════════════════════════════════════════════
+
+9.1 Good Faith Negotiation
+Parties agree to first attempt to resolve any disputes through good faith
+negotiation.
+
+9.2 Mediation
+If negotiation fails, parties agree to mediation before pursuing legal action.
+
+9.3 Arbitration
+Disputes not resolved through mediation may be submitted to binding arbitration
+under the rules of the American Arbitration Association.
+
+9.4 Attorneys' Fees
+Prevailing party in any legal action is entitled to reasonable attorneys' fees
+and costs.
+
+9.5 Jurisdiction
+This Agreement shall be governed by the laws of the State of [YOUR STATE].
+
+═══════════════════════════════════════════════════════════════════════════
+                          10. MISCELLANEOUS
+═══════════════════════════════════════════════════════════════════════════
+
+10.1 Independent Contractor
+Platform and Owner are independent contractors. Nothing herein creates a
+partnership, joint venture, or employment relationship.
+
+10.2 No Guarantee
+Platform makes no guarantee of finding tenants. Commission is owed only when
+Platform-referred applicant becomes a tenant.
+
+10.3 Owner Vetting
+Owner retains full discretion to accept or reject any applicant. Platform's
+screening does not constitute endorsement or guarantee.
+
+10.4 Entire Agreement
+This Agreement constitutes the entire understanding between parties and
+supersedes all prior agreements.
+
+10.5 Amendments
+Amendments must be in writing and signed by both parties.
+
+10.6 Severability
+If any provision is found invalid, remaining provisions remain in full effect.
+
+10.7 Assignment
+Neither party may assign this Agreement without written consent of the other.
+
+═══════════════════════════════════════════════════════════════════════════
+                           11. ACKNOWLEDGMENTS
+═══════════════════════════════════════════════════════════════════════════
+
+Owner acknowledges that:
+
+✓ I have read and understand this entire Agreement
+✓ I agree to pay 16% commission for Platform-referred tenants
+✓ I understand the 12-month lookback period
+✓ I will not circumvent the Platform to avoid commission
+✓ I will communicate through Platform channels initially
+✓ I will notify Platform of rental outcomes promptly
+✓ Platform records and Tracking IDs establish proof of referral
+✓ I have had opportunity to seek legal counsel before signing
+
+═══════════════════════════════════════════════════════════════════════════
+                              SIGNATURES
+═══════════════════════════════════════════════════════════════════════════
+
+PLATFORM OPERATOR:
+
+Signature: _______________________________  Date: __________________
+
+Print Name: _______________________________
+
+Title: ____________________________________
+
+
+PROPERTY OWNER:
+
+Signature: _______________________________  Date: __________________
+
+Print Name: _______________________________
+
+Email: ____________________________________
+
+Phone: ____________________________________
+
+
+═══════════════════════════════════════════════════════════════════════════
+
+WITNESS (Optional but recommended):
+
+Signature: _______________________________  Date: __________________
+
+Print Name: _______________________________
+
+
+═══════════════════════════════════════════════════════════════════════════
+                              FOR OFFICE USE ONLY
+═══════════════════════════════════════════════════════════════════════════
+
+Agreement ID: ________________
+
+Owner ID: ________________
+
+Date Received: ________________
+
+Processed By: ________________
+
+═══════════════════════════════════════════════════════════════════════════
+                              END OF AGREEMENT
+═══════════════════════════════════════════════════════════════════════════
+
+IMPORTANT NOTES:
+
+1. This is a template. Have an attorney review before use.
+
+2. Consider requiring Owner to initial each page.
+
+3. Keep signed copies: one for Platform, one for Owner.
+
+4. Store digitally in secure location with property listing.
+
+5. Update annually or when commission structure changes.
+
+6. Consider adding insurance/liability clauses if needed.
+
+7. May need real estate broker license depending on your state - consult attorney.
+
+═══════════════════════════════════════════════════════════════════════════

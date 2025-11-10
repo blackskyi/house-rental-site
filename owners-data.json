@@ -1,0 +1,52 @@
+{
+  "owners": [
+    {
+      "id": "sara-001",
+      "name": "Sara",
+      "email": "gokulprasannak@gmail.com",
+      "phone": "(213) 301-9692",
+      "password": "$2a$10$hashed_password_here",
+      "joinDate": "2025-01-10",
+      "bio": "Quality student housing near campus",
+      "profileImage": "assets/images/owners/sara.jpg",
+      "properties": ["property-1", "property-2"],
+      "verified": true,
+      "rating": 4.8,
+      "totalProperties": 2
+    }
+  ],
+  "properties": {
+    "property-1": {
+      "id": "property-1",
+      "ownerId": "sara-001",
+      "title": "Spacious 3B2B Near Campus",
+      "description": "Huge room with attached bath in a spacious house. One block away from campus!",
+      "type": "3 Rooms",
+      "sharedRent": 600,
+      "privateRent": 1150,
+      "availableFrom": "Mid December",
+      "totalRooms": 3,
+      "availableRooms": 3,
+      "features": ["Free Laundry", "Parking", "Backyard", "1 Block from Campus"],
+      "photos": ["assets/images/property-1/room-1.jpg", "assets/images/property-1/room-2.jpg"],
+      "active": true,
+      "createdAt": "2025-01-10"
+    },
+    "property-2": {
+      "id": "property-2",
+      "ownerId": "sara-001",
+      "title": "Spacious 5B3B Near Campus",
+      "description": "Huge rooms with attached baths in a spacious house. Air-conditioned rooms, one block from campus!",
+      "type": "5 Rooms",
+      "sharedRent": 600,
+      "privateRent": 1150,
+      "availableFrom": "Mid December",
+      "totalRooms": 5,
+      "availableRooms": 2,
+      "features": ["Air-Conditioned", "Free Laundry", "Parking", "Backyard with Gazebo"],
+      "photos": [],
+      "active": true,
+      "createdAt": "2025-01-10"
+    }
+  }
+}
