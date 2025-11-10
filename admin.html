@@ -141,8 +141,26 @@
             <!-- Property 1 -->
             <div class="admin-section">
                 <h2>Property 1: Spacious 3B2B Near Campus</h2>
-                <p><strong>Rent:</strong> $600/month per room | <strong>Type:</strong> 3 Private Rooms</p>
 
+                <h3 style="margin-top: 0;">Pricing</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                    <div class="form-group">
+                        <label for="prop1SharedRent">Shared Spot ($/month)</label>
+                        <input type="number" id="prop1SharedRent" value="600" onchange="saveState()" style="width: 100%; padding: 8px; border: 1px solid #dadce0; border-radius: 4px;">
+                    </div>
+                    <div class="form-group">
+                        <label for="prop1PrivateRent">Private Room ($/month)</label>
+                        <input type="number" id="prop1PrivateRent" value="1150" onchange="saveState()" style="width: 100%; padding: 8px; border: 1px solid #dadce0; border-radius: 4px;">
+                    </div>
+                </div>
+
+                <h3>Availability</h3>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="prop1AvailDate">Available From</label>
+                    <input type="text" id="prop1AvailDate" value="Mid December" onchange="saveState()" placeholder="e.g., Mid December, January 1st" style="width: 100%; padding: 8px; border: 1px solid #dadce0; border-radius: 4px;">
+                </div>
+
+                <h3>Room Status</h3>
                 <div class="room-toggle">
                     <strong>Room 1</strong>
                     <label class="toggle-switch">
@@ -170,13 +188,38 @@
                 <div id="property1Status" style="margin-top: 20px; padding: 15px; background: #e6f4ea; border-radius: 6px; color: #34a853;">
                     <strong>Available Rooms:</strong> 3 of 3
                 </div>
+
+                <h3 style="margin-top: 20px;">Photos</h3>
+                <div class="form-group">
+                    <label for="prop1PhotoNotes">Photo Upload Notes</label>
+                    <textarea id="prop1PhotoNotes" onchange="saveState()" rows="3" placeholder="Track which photos you want to add/remove..." style="width: 100%; padding: 8px; border: 1px solid #dadce0; border-radius: 4px; font-family: 'Roboto', sans-serif;"></textarea>
+                    <p style="font-size: 0.85rem; color: #5f6368; margin-top: 5px;">Note: Photos must be manually added to assets/images/property-1/ folder</p>
+                </div>
             </div>
 
             <!-- Property 2 -->
             <div class="admin-section">
                 <h2>Property 2: Spacious 5B3B Near Campus</h2>
-                <p><strong>Rent:</strong> $600/month per room | <strong>Type:</strong> 5 Private Rooms</p>
 
+                <h3 style="margin-top: 0;">Pricing</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                    <div class="form-group">
+                        <label for="prop2SharedRent">Shared Spot ($/month)</label>
+                        <input type="number" id="prop2SharedRent" value="600" onchange="saveState()" style="width: 100%; padding: 8px; border: 1px solid #dadce0; border-radius: 4px;">
+                    </div>
+                    <div class="form-group">
+                        <label for="prop2PrivateRent">Private Room ($/month)</label>
+                        <input type="number" id="prop2PrivateRent" value="1150" onchange="saveState()" style="width: 100%; padding: 8px; border: 1px solid #dadce0; border-radius: 4px;">
+                    </div>
+                </div>
+
+                <h3>Availability</h3>
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label for="prop2AvailDate">Available From</label>
+                    <input type="text" id="prop2AvailDate" value="Mid December" onchange="saveState()" placeholder="e.g., Mid December, January 1st" style="width: 100%; padding: 8px; border: 1px solid #dadce0; border-radius: 4px;">
+                </div>
+
+                <h3>Room Status</h3>
                 <div class="room-toggle">
                     <strong>Room 1</strong>
                     <label class="toggle-switch">
@@ -219,6 +262,13 @@
 
                 <div id="property2Status" style="margin-top: 20px; padding: 15px; background: #e6f4ea; border-radius: 6px; color: #34a853;">
                     <strong>Available Rooms:</strong> 2 of 5
+                </div>
+
+                <h3 style="margin-top: 20px;">Photos</h3>
+                <div class="form-group">
+                    <label for="prop2PhotoNotes">Photo Upload Notes</label>
+                    <textarea id="prop2PhotoNotes" onchange="saveState()" rows="3" placeholder="Track which photos you want to add/remove..." style="width: 100%; padding: 8px; border: 1px solid #dadce0; border-radius: 4px; font-family: 'Roboto', sans-serif;"></textarea>
+                    <p style="font-size: 0.85rem; color: #5f6368; margin-top: 5px;">Note: Photos must be manually added to assets/images/property-2/ folder</p>
                 </div>
             </div>
 
@@ -306,14 +356,24 @@
 
         function saveState() {
             const state = {
+                // Property 1
                 prop1room1: document.getElementById('prop1room1').checked,
                 prop1room2: document.getElementById('prop1room2').checked,
                 prop1room3: document.getElementById('prop1room3').checked,
+                prop1SharedRent: document.getElementById('prop1SharedRent').value,
+                prop1PrivateRent: document.getElementById('prop1PrivateRent').value,
+                prop1AvailDate: document.getElementById('prop1AvailDate').value,
+                prop1PhotoNotes: document.getElementById('prop1PhotoNotes').value,
+                // Property 2
                 room1: document.getElementById('room1').checked,
                 room2: document.getElementById('room2').checked,
                 room3: document.getElementById('room3').checked,
                 room4: document.getElementById('room4').checked,
-                room5: document.getElementById('room5').checked
+                room5: document.getElementById('room5').checked,
+                prop2SharedRent: document.getElementById('prop2SharedRent').value,
+                prop2PrivateRent: document.getElementById('prop2PrivateRent').value,
+                prop2AvailDate: document.getElementById('prop2AvailDate').value,
+                prop2PhotoNotes: document.getElementById('prop2PhotoNotes').value
             };
             localStorage.setItem('propertyState', JSON.stringify(state));
         }
@@ -322,14 +382,24 @@
             const saved = localStorage.getItem('propertyState');
             if (saved) {
                 const state = JSON.parse(saved);
+                // Property 1
                 document.getElementById('prop1room1').checked = state.prop1room1 !== undefined ? state.prop1room1 : true;
                 document.getElementById('prop1room2').checked = state.prop1room2 !== undefined ? state.prop1room2 : true;
                 document.getElementById('prop1room3').checked = state.prop1room3 !== undefined ? state.prop1room3 : true;
+                document.getElementById('prop1SharedRent').value = state.prop1SharedRent || '600';
+                document.getElementById('prop1PrivateRent').value = state.prop1PrivateRent || '1150';
+                document.getElementById('prop1AvailDate').value = state.prop1AvailDate || 'Mid December';
+                document.getElementById('prop1PhotoNotes').value = state.prop1PhotoNotes || '';
+                // Property 2
                 document.getElementById('room1').checked = state.room1 !== undefined ? state.room1 : true;
                 document.getElementById('room2').checked = state.room2 !== undefined ? state.room2 : true;
                 document.getElementById('room3').checked = state.room3 !== undefined ? state.room3 : false;
                 document.getElementById('room4').checked = state.room4 !== undefined ? state.room4 : false;
                 document.getElementById('room5').checked = state.room5 !== undefined ? state.room5 : false;
+                document.getElementById('prop2SharedRent').value = state.prop2SharedRent || '600';
+                document.getElementById('prop2PrivateRent').value = state.prop2PrivateRent || '1150';
+                document.getElementById('prop2AvailDate').value = state.prop2AvailDate || 'Mid December';
+                document.getElementById('prop2PhotoNotes').value = state.prop2PhotoNotes || '';
 
                 updateProperty1Status();
                 updateProperty2Status();
@@ -342,24 +412,81 @@
 PROPERTY STATUS REPORT
 Generated: ${new Date().toLocaleString()}
 
+═══════════════════════════════════════════════════════
 PROPERTY 1: Spacious 3B2B Near Campus
-Room 1: ${state.prop1room1 !== false ? 'AVAILABLE' : 'TAKEN'}
-Room 2: ${state.prop1room2 !== false ? 'AVAILABLE' : 'TAKEN'}
-Room 3: ${state.prop1room3 !== false ? 'AVAILABLE' : 'TAKEN'}
+═══════════════════════════════════════════════════════
 
+PRICING:
+- Shared Spot: $${state.prop1SharedRent || '600'}/month
+- Private Room: $${state.prop1PrivateRent || '1150'}/month
+
+AVAILABILITY:
+- Available From: ${state.prop1AvailDate || 'Mid December'}
+
+ROOM STATUS:
+- Room 1: ${state.prop1room1 !== false ? 'AVAILABLE' : 'TAKEN'}
+- Room 2: ${state.prop1room2 !== false ? 'AVAILABLE' : 'TAKEN'}
+- Room 3: ${state.prop1room3 !== false ? 'AVAILABLE' : 'TAKEN'}
+
+PHOTO NOTES:
+${state.prop1PhotoNotes || 'No notes'}
+
+═══════════════════════════════════════════════════════
 PROPERTY 2: Spacious 5B3B Near Campus
-Room 1: ${state.room1 !== false ? 'AVAILABLE' : 'TAKEN'}
-Room 2: ${state.room2 !== false ? 'AVAILABLE' : 'TAKEN'}
-Room 3: ${state.room3 ? 'AVAILABLE' : 'TAKEN'}
-Room 4: ${state.room4 ? 'AVAILABLE' : 'TAKEN'}
-Room 5: ${state.room5 ? 'AVAILABLE' : 'TAKEN'}
+═══════════════════════════════════════════════════════
 
-TO UPDATE THE WEBSITE:
+PRICING:
+- Shared Spot: $${state.prop2SharedRent || '600'}/month
+- Private Room: $${state.prop2PrivateRent || '1150'}/month
+
+AVAILABILITY:
+- Available From: ${state.prop2AvailDate || 'Mid December'}
+
+ROOM STATUS:
+- Room 1: ${state.room1 !== false ? 'AVAILABLE' : 'TAKEN'}
+- Room 2: ${state.room2 !== false ? 'AVAILABLE' : 'TAKEN'}
+- Room 3: ${state.room3 ? 'AVAILABLE' : 'TAKEN'}
+- Room 4: ${state.room4 ? 'AVAILABLE' : 'TAKEN'}
+- Room 5: ${state.room5 ? 'AVAILABLE' : 'TAKEN'}
+
+PHOTO NOTES:
+${state.prop2PhotoNotes || 'No notes'}
+
+═══════════════════════════════════════════════════════
+UPDATE INSTRUCTIONS
+═══════════════════════════════════════════════════════
+
+TO UPDATE PRICING:
+1. Edit property-1.html and property-2.html
+2. Find "Shared Spot:" and "Private Room:" sections
+3. Update the dollar amounts in detail-item values
+4. Update room card pricing text
+
+TO UPDATE AVAILABILITY DATES:
+1. Edit property-1.html, property-2.html, and index.html
+2. Find "Available From:" sections
+3. Update the date values
+
+TO UPDATE ROOM STATUS:
 1. Edit property-1.html and/or property-2.html
 2. Find each room card
 3. Change class="room-card available" to class="room-card taken" (or vice versa)
-4. Change the status text accordingly
-5. Save and push to GitHub
+4. Change the room-status div text from "Available" to "Taken" (or vice versa)
+
+TO ADD/REMOVE PHOTOS:
+1. Add images to: assets/images/property-1/ or assets/images/property-2/
+2. Organize into subfolders: room-1/, room-2/, kitchen/, bathroom/, etc.
+3. Edit property HTML file to add new gallery items:
+   <div class="gallery-item">
+       <img src="assets/images/property-X/folder/image.jpg" alt="Description" onclick="openModal(this.src)">
+   </div>
+
+AFTER MAKING CHANGES:
+1. Save all HTML files
+2. Run: git add .
+3. Run: git commit -m "Update property details"
+4. Run: git push
+5. Railway will auto-deploy (takes 2-3 minutes)
             `;
 
             const blob = new Blob([text], { type: 'text/plain' });
