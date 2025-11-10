@@ -1,5 +1,5 @@
 # Commission Protection Strategy
-## How to Ensure You Get Your 16% Commission
+## How to Ensure You Get Your 12% Success Fee
 
 ---
 

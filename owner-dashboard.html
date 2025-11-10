@@ -172,11 +172,24 @@
         <div class="dashboard-section">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                 <h2 style="margin: 0; border: none;">My Properties</h2>
-                <a href="admin.html" class="add-property-btn">Manage Properties</a>
+                <button class="add-property-btn" onclick="showAddProperty()" style="border: none;">+ Add Property</button>
             </div>
 
             <div id="propertiesList">
                 <!-- Properties will be loaded here -->
+            </div>
+
+            <!-- Property Management Modal -->
+            <div id="propertyModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; overflow-y: auto;">
+                <div style="max-width: 900px; margin: 50px auto; background: white; border-radius: 8px; padding: 40px; position: relative;">
+                    <button onclick="closePropertyModal()" style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 24px; cursor: pointer; color: #5f6368;">&times;</button>
+
+                    <h2 style="margin-top: 0; margin-bottom: 30px;" id="modalTitle">Manage Property</h2>
+
+                    <div id="propertyManagementContent">
+                        <!-- Content will be loaded here -->
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -349,6 +362,188 @@
                     alert('Application rejected. Tenant will be notified.');
                 }
             }
+        }
+
+        // Property Management Functions
+        function showAddProperty() {
+            alert('Add Property feature coming soon!\n\nFor now, contact support to add new properties.');
+        }
+
+        function manageProperty(propertyId) {
+            const properties = [
+                {
+                    id: 'property-1',
+                    title: 'Spacious 3B2B Near Campus',
+                    availableRooms: 3,
+                    totalRooms: 3,
+                    sharedRent: 600,
+                    privateRent: 1150,
+                    active: true,
+                    rooms: ['Room 1', 'Room 2', 'Room 3']
+                },
+                {
+                    id: 'property-2',
+                    title: 'Spacious 5B3B Near Campus',
+                    availableRooms: 2,
+                    totalRooms: 5,
+                    sharedRent: 600,
+                    privateRent: 1150,
+                    active: true,
+                    rooms: ['Room 1', 'Room 2', 'Room 3', 'Room 4', 'Room 5']
+                }
+            ];
+
+            const property = properties.find(p => p.id === propertyId);
+            if (!property) return;
+
+            document.getElementById('modalTitle').textContent = `Manage ${property.title}`;
+
+            const content = `
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: #4285f4; margin-bottom: 15px;">Room Availability</h3>
+                    <p style="font-size: 0.9rem; color: #5f6368; margin-bottom: 20px;">
+                        Toggle room availability on/off. When all rooms are occupied, the property will be automatically marked as unavailable.
+                    </p>
+                    ${property.rooms.map((room, index) => `
+                        <div class="room-toggle" style="display: flex; justify-content: space-between; align-items: center; padding: 15px; margin: 10px 0; background: #f8f9fa; border-radius: 6px;">
+                            <div>
+                                <strong>${room}</strong>
+                                <span style="margin-left: 10px; font-size: 0.85rem; color: #5f6368;">
+                                    ${index < property.availableRooms ? 'Available' : 'Occupied'}
+                                </span>
+                            </div>
+                            <label class="toggle-switch" style="position: relative; width: 60px; height: 30px;">
+                                <input type="checkbox" ${index < property.availableRooms ? 'checked' : ''}
+                                       onchange="toggleRoom('${propertyId}', ${index})">
+                                <span class="slider" style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: ${index < property.availableRooms ? '#34a853' : '#ea4335'}; transition: .4s; border-radius: 30px;">
+                                    <span style="position: absolute; content: ''; height: 22px; width: 22px; left: ${index < property.availableRooms ? '34px' : '4px'}; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; display: block;"></span>
+                                </span>
+                            </label>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: #4285f4; margin-bottom: 15px;">Rental Rates</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="form-group">
+                            <label>Shared Spot Rate</label>
+                            <input type="number" value="${property.sharedRent}"
+                                   onchange="updateRate('${propertyId}', 'shared', this.value)"
+                                   style="width: 100%; padding: 10px; border: 1px solid #dadce0; border-radius: 4px;">
+                        </div>
+                        <div class="form-group">
+                            <label>Private Room Rate</label>
+                            <input type="number" value="${property.privateRent}"
+                                   onchange="updateRate('${propertyId}', 'private', this.value)"
+                                   style="width: 100%; padding: 10px; border: 1px solid #dadce0; border-radius: 4px;">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: #4285f4; margin-bottom: 15px;">Photo Management</h3>
+                    <p style="font-size: 0.9rem; color: #5f6368; margin-bottom: 15px;">
+                        Upload and manage photos for your property listing.
+                    </p>
+                    <button onclick="showPhotoUpload('${propertyId}')"
+                            style="background: #34a853; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
+                        Upload Photos
+                    </button>
+                </div>
+
+                <div style="text-align: right; margin-top: 30px; padding-top: 20px; border-top: 1px solid #dadce0;">
+                    <button onclick="closePropertyModal()"
+                            style="background: #5f6368; color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px;">
+                        Close
+                    </button>
+                    <button onclick="savePropertyChanges('${propertyId}')"
+                            style="background: #4285f4; color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer;">
+                        Save Changes
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('propertyManagementContent').innerHTML = content;
+            document.getElementById('propertyModal').style.display = 'block';
+        }
+
+        function closePropertyModal() {
+            document.getElementById('propertyModal').style.display = 'none';
+        }
+
+        function toggleRoom(propertyId, roomIndex) {
+            alert(`Toggle room ${roomIndex + 1} availability for ${propertyId}\n\nThis feature will update the database when integrated.`);
+        }
+
+        function updateRate(propertyId, type, value) {
+            console.log(`Update ${type} rate for ${propertyId} to $${value}`);
+            // TODO: Save to database
+        }
+
+        function showPhotoUpload(propertyId) {
+            alert('Photo upload system will be integrated here.\n\nYou\'ll be able to:\n- Upload multiple photos\n- Categorize by room/area\n- Reorder photos\n- Set featured image');
+        }
+
+        function savePropertyChanges(propertyId) {
+            alert('Property changes saved!\n\nAll updates will be reflected on the live listing.');
+            closePropertyModal();
+            loadProperties();
+        }
+
+        // Update property cards to include "Manage" button
+        function loadProperties() {
+            const propertiesList = document.getElementById('propertiesList');
+
+            const properties = [
+                {
+                    id: 'property-1',
+                    title: 'Spacious 3B2B Near Campus',
+                    availableRooms: 3,
+                    totalRooms: 3,
+                    sharedRent: 600,
+                    privateRent: 1150,
+                    active: true
+                },
+                {
+                    id: 'property-2',
+                    title: 'Spacious 5B3B Near Campus',
+                    availableRooms: 2,
+                    totalRooms: 5,
+                    sharedRent: 600,
+                    privateRent: 1150,
+                    active: true
+                }
+            ];
+
+            propertiesList.innerHTML = properties.map(prop => `
+                <div class="property-card-dashboard">
+                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                        <h3 style="margin: 0;">${prop.title}</h3>
+                        <button onclick="manageProperty('${prop.id}')"
+                                style="background: #4285f4; color: white; padding: 6px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">
+                            Manage
+                        </button>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 15px;">
+                        <div>
+                            <strong>Rooms:</strong> ${prop.availableRooms} / ${prop.totalRooms} available
+                        </div>
+                        <div>
+                            <strong>Shared:</strong> $${prop.sharedRent}/month
+                        </div>
+                        <div>
+                            <strong>Private:</strong> $${prop.privateRent}/month
+                        </div>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <span class="status-badge ${prop.active ? 'status-approved' : 'status-rejected'}">
+                            ${prop.active ? 'Active' : 'Inactive'}
+                        </span>
+                        <a href="${prop.id}.html" target="_blank" style="margin-left: 10px; color: #4285f4; text-decoration: none;">View Live →</a>
+                    </div>
+                </div>
+            `).join('');
         }
 
         // Initialize

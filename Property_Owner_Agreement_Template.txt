@@ -66,13 +66,19 @@ Owner agrees to:
                          2. COMMISSION STRUCTURE
 ═══════════════════════════════════════════════════════════════════════════
 
-2.1 Commission Rate
-Owner agrees to pay Platform a commission of SIXTEEN PERCENT (16%) of the
-first year's gross rent for any tenant sourced through the Platform.
+2.1 Success Fee
+Owner agrees to pay Platform a ONE-TIME SUCCESS FEE of TWELVE PERCENT (12%)
+of the first year's gross rent for any tenant sourced through the Platform.
+
+NO UPFRONT COSTS: Owner pays $0 until a tenant is successfully placed.
+If Platform does not find a tenant, Owner owes nothing.
 
 2.2 Commission Calculation Examples:
    - Monthly rent $1,000 × 12 months = $12,000 annual rent
-   - Platform commission: $12,000 × 16% = $1,920
+   - Platform success fee: $12,000 × 12% = $1,440
+
+   - Monthly rent $1,200 × 12 months = $14,400 annual rent
+   - Platform success fee: $14,400 × 12% = $1,728 (approximately 1.4 months of rent)
 
 2.3 When Commission is Due
 Commission is due when ANY of the following occurs:

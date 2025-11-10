@@ -18,8 +18,8 @@
 
 // CONFIGURATION
 const PLATFORM_EMAIL = 'gokulprasannak@gmail.com'; // Your platform email
-const PLATFORM_NAME = 'CampusRentals Platform'; // Your platform name
-const COMMISSION_RATE = '16%'; // Your commission rate
+const PLATFORM_NAME = 'Campus Rentals'; // Your platform name
+const COMMISSION_RATE = '12%'; // Your commission rate
 
 function doPost(e) {
   try {
