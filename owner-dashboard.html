@@ -137,6 +137,144 @@
             text-decoration: none;
             display: inline-block;
         }
+
+        /* Toggle Switch Styles */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ea4335;
+            transition: .4s;
+            border-radius: 30px;
+        }
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        .toggle-switch input:checked + .toggle-slider {
+            background-color: #34a853;
+        }
+        .toggle-switch input:checked + .toggle-slider:before {
+            transform: translateX(30px);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .modal-content {
+            max-width: 900px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #5f6368;
+            line-height: 1;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+        }
+        .modal-close:hover {
+            color: #202124;
+        }
+        .room-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #202124;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        /* Photo Upload Styles */
+        .photo-preview-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .photo-preview-item {
+            border: 1px solid #dadce0;
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+        }
+        .photo-preview-thumbnail {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .remove-photo-btn {
+            background: #ea4335;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -180,12 +318,10 @@
             </div>
 
             <!-- Property Management Modal -->
-            <div id="propertyModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; overflow-y: auto;">
-                <div style="max-width: 900px; margin: 50px auto; background: white; border-radius: 8px; padding: 40px; position: relative;">
-                    <button onclick="closePropertyModal()" style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 24px; cursor: pointer; color: #5f6368;">&times;</button>
-
+            <div id="propertyModal" class="modal-overlay">
+                <div class="modal-content">
+                    <button onclick="closePropertyModal()" class="modal-close">&times;</button>
                     <h2 style="margin-top: 0; margin-bottom: 30px;" id="modalTitle">Manage Property</h2>
-
                     <div id="propertyManagementContent">
                         <!-- Content will be loaded here -->
                     </div>
@@ -369,31 +505,36 @@
             alert('Add Property feature coming soon!\n\nFor now, contact support to add new properties.');
         }
 
-        function manageProperty(propertyId) {
-            const properties = [
-                {
-                    id: 'property-1',
-                    title: 'Spacious 3B2B Near Campus',
-                    availableRooms: 3,
-                    totalRooms: 3,
-                    sharedRent: 600,
-                    privateRent: 1150,
-                    active: true,
-                    rooms: ['Room 1', 'Room 2', 'Room 3']
-                },
-                {
-                    id: 'property-2',
-                    title: 'Spacious 5B3B Near Campus',
-                    availableRooms: 2,
-                    totalRooms: 5,
-                    sharedRent: 600,
-                    privateRent: 1150,
-                    active: true,
-                    rooms: ['Room 1', 'Room 2', 'Room 3', 'Room 4', 'Room 5']
-                }
-            ];
+        // Store property data
+        let propertyData = {
+            'property-1': {
+                id: 'property-1',
+                title: 'Spacious 3B2B Near Campus',
+                availableRooms: 3,
+                totalRooms: 3,
+                sharedRent: 600,
+                privateRent: 1150,
+                active: true,
+                rooms: ['Room 1', 'Room 2', 'Room 3'],
+                roomStatus: [true, true, true], // true = available
+                photos: []
+            },
+            'property-2': {
+                id: 'property-2',
+                title: 'Spacious 5B3B Near Campus',
+                availableRooms: 2,
+                totalRooms: 5,
+                sharedRent: 600,
+                privateRent: 1150,
+                active: true,
+                rooms: ['Room 1', 'Room 2', 'Room 3', 'Room 4', 'Room 5'],
+                roomStatus: [true, true, false, false, false], // true = available
+                photos: []
+            }
+        };
 
-            const property = properties.find(p => p.id === propertyId);
+        function manageProperty(propertyId) {
+            const property = propertyData[propertyId];
             if (!property) return;
 
             document.getElementById('modalTitle').textContent = `Manage ${property.title}`;
@@ -404,39 +545,35 @@
                     <p style="font-size: 0.9rem; color: #5f6368; margin-bottom: 20px;">
                         Toggle room availability on/off. When all rooms are occupied, the property will be automatically marked as unavailable.
                     </p>
-                    ${property.rooms.map((room, index) => `
-                        <div class="room-toggle" style="display: flex; justify-content: space-between; align-items: center; padding: 15px; margin: 10px 0; background: #f8f9fa; border-radius: 6px;">
-                            <div>
-                                <strong>${room}</strong>
-                                <span style="margin-left: 10px; font-size: 0.85rem; color: #5f6368;">
-                                    ${index < property.availableRooms ? 'Available' : 'Occupied'}
-                                </span>
+                    <div id="roomToggles">
+                        ${property.rooms.map((room, index) => `
+                            <div class="room-toggle">
+                                <div>
+                                    <strong>${room}</strong>
+                                    <span style="margin-left: 10px; font-size: 0.85rem; color: #5f6368;" id="room-status-${index}">
+                                        ${property.roomStatus[index] ? 'Available' : 'Occupied'}
+                                    </span>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" ${property.roomStatus[index] ? 'checked' : ''}
+                                           data-property="${propertyId}" data-room="${index}">
+                                    <span class="toggle-slider"></span>
+                                </label>
                             </div>
-                            <label class="toggle-switch" style="position: relative; width: 60px; height: 30px;">
-                                <input type="checkbox" ${index < property.availableRooms ? 'checked' : ''}
-                                       onchange="toggleRoom('${propertyId}', ${index})">
-                                <span class="slider" style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: ${index < property.availableRooms ? '#34a853' : '#ea4335'}; transition: .4s; border-radius: 30px;">
-                                    <span style="position: absolute; content: ''; height: 22px; width: 22px; left: ${index < property.availableRooms ? '34px' : '4px'}; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; display: block;"></span>
-                                </span>
-                            </label>
-                        </div>
-                    `).join('')}
+                        `).join('')}
+                    </div>
                 </div>
 
                 <div style="margin-bottom: 30px;">
                     <h3 style="color: #4285f4; margin-bottom: 15px;">Rental Rates</h3>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                         <div class="form-group">
-                            <label>Shared Spot Rate</label>
-                            <input type="number" value="${property.sharedRent}"
-                                   onchange="updateRate('${propertyId}', 'shared', this.value)"
-                                   style="width: 100%; padding: 10px; border: 1px solid #dadce0; border-radius: 4px;">
+                            <label>Shared Spot Rate ($/month)</label>
+                            <input type="number" id="sharedRent-${propertyId}" value="${property.sharedRent}">
                         </div>
                         <div class="form-group">
-                            <label>Private Room Rate</label>
-                            <input type="number" value="${property.privateRent}"
-                                   onchange="updateRate('${propertyId}', 'private', this.value)"
-                                   style="width: 100%; padding: 10px; border: 1px solid #dadce0; border-radius: 4px;">
+                            <label>Private Room Rate ($/month)</label>
+                            <input type="number" id="privateRent-${propertyId}" value="${property.privateRent}">
                         </div>
                     </div>
                 </div>
@@ -444,12 +581,14 @@
                 <div style="margin-bottom: 30px;">
                     <h3 style="color: #4285f4; margin-bottom: 15px;">Photo Management</h3>
                     <p style="font-size: 0.9rem; color: #5f6368; margin-bottom: 15px;">
-                        Upload and manage photos for your property listing.
+                        Upload photos for your property. Supported formats: JPG, PNG. Max 10MB per photo.
                     </p>
-                    <button onclick="showPhotoUpload('${propertyId}')"
+                    <input type="file" id="photoInput-${propertyId}" accept="image/*" multiple style="display: none;">
+                    <button onclick="document.getElementById('photoInput-${propertyId}').click()"
                             style="background: #34a853; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
-                        Upload Photos
+                        Choose Photos
                     </button>
+                    <div id="photoPreview-${propertyId}" class="photo-preview-container"></div>
                 </div>
 
                 <div style="text-align: right; margin-top: 30px; padding-top: 20px; border-top: 1px solid #dadce0;">
@@ -466,27 +605,135 @@
 
             document.getElementById('propertyManagementContent').innerHTML = content;
             document.getElementById('propertyModal').style.display = 'block';
+
+            // Attach toggle event listeners
+            setTimeout(() => {
+                const toggles = document.querySelectorAll('#roomToggles input[type="checkbox"]');
+                toggles.forEach(toggle => {
+                    toggle.addEventListener('change', function() {
+                        const propId = this.dataset.property;
+                        const roomIndex = parseInt(this.dataset.room);
+                        toggleRoom(propId, roomIndex, this.checked);
+                    });
+                });
+
+                // Attach photo input listener
+                const photoInput = document.getElementById(`photoInput-${propertyId}`);
+                if (photoInput) {
+                    photoInput.addEventListener('change', function(e) {
+                        handlePhotoUpload(propertyId, e);
+                    });
+                }
+            }, 100);
         }
 
         function closePropertyModal() {
             document.getElementById('propertyModal').style.display = 'none';
         }
 
-        function toggleRoom(propertyId, roomIndex) {
-            alert(`Toggle room ${roomIndex + 1} availability for ${propertyId}\n\nThis feature will update the database when integrated.`);
+        function toggleRoom(propertyId, roomIndex, isAvailable) {
+            // Update property data
+            propertyData[propertyId].roomStatus[roomIndex] = isAvailable;
+
+            // Update available rooms count
+            const availableCount = propertyData[propertyId].roomStatus.filter(status => status).length;
+            propertyData[propertyId].availableRooms = availableCount;
+
+            // Update status text
+            const statusElement = document.getElementById(`room-status-${roomIndex}`);
+            if (statusElement) {
+                statusElement.textContent = isAvailable ? 'Available' : 'Occupied';
+            }
+
+            console.log(`Room ${roomIndex + 1} ${isAvailable ? 'marked as available' : 'marked as occupied'}`);
+            console.log(`Total available rooms: ${availableCount}`);
         }
 
-        function updateRate(propertyId, type, value) {
-            console.log(`Update ${type} rate for ${propertyId} to $${value}`);
-            // TODO: Save to database
+        function handlePhotoUpload(propertyId, event) {
+            const files = event.target.files;
+            const previewContainer = document.getElementById(`photoPreview-${propertyId}`);
+
+            if (!files || files.length === 0) return;
+
+            Array.from(files).forEach((file, index) => {
+                // Validate file size (max 10MB)
+                if (file.size > 10 * 1024 * 1024) {
+                    alert(`File ${file.name} is too large. Max size is 10MB.`);
+                    return;
+                }
+
+                // Validate file type
+                if (!file.type.startsWith('image/')) {
+                    alert(`File ${file.name} is not an image.`);
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const photoData = {
+                        id: `photo-${Date.now()}-${index}`,
+                        fileName: file.name,
+                        dataUrl: e.target.result,
+                        size: file.size
+                    };
+
+                    // Store photo data
+                    propertyData[propertyId].photos.push(photoData);
+
+                    // Create preview element
+                    const photoDiv = document.createElement('div');
+                    photoDiv.className = 'photo-preview-item';
+                    photoDiv.id = photoData.id;
+                    photoDiv.innerHTML = `
+                        <img src="${photoData.dataUrl}" alt="${photoData.fileName}" class="photo-preview-thumbnail">
+                        <div style="font-size: 0.85rem; color: #5f6368; margin-bottom: 5px;">${photoData.fileName}</div>
+                        <div style="font-size: 0.75rem; color: #5f6368; margin-bottom: 10px;">${(photoData.size / 1024).toFixed(1)} KB</div>
+                        <button class="remove-photo-btn" onclick="removePhoto('${propertyId}', '${photoData.id}')">Remove</button>
+                    `;
+
+                    previewContainer.appendChild(photoDiv);
+                };
+                reader.readAsDataURL(file);
+            });
         }
 
-        function showPhotoUpload(propertyId) {
-            alert('Photo upload system will be integrated here.\n\nYou\'ll be able to:\n- Upload multiple photos\n- Categorize by room/area\n- Reorder photos\n- Set featured image');
+        function removePhoto(propertyId, photoId) {
+            // Remove from data
+            propertyData[propertyId].photos = propertyData[propertyId].photos.filter(p => p.id !== photoId);
+
+            // Remove from DOM
+            const photoElement = document.getElementById(photoId);
+            if (photoElement) {
+                photoElement.remove();
+            }
+
+            console.log(`Photo ${photoId} removed`);
         }
 
         function savePropertyChanges(propertyId) {
-            alert('Property changes saved!\n\nAll updates will be reflected on the live listing.');
+            const property = propertyData[propertyId];
+
+            // Update rental rates
+            const sharedRent = document.getElementById(`sharedRent-${propertyId}`).value;
+            const privateRent = document.getElementById(`privateRent-${propertyId}`).value;
+
+            property.sharedRent = parseInt(sharedRent);
+            property.privateRent = parseInt(privateRent);
+
+            // Calculate available rooms
+            const availableCount = property.roomStatus.filter(status => status).length;
+            property.availableRooms = availableCount;
+
+            console.log('Property changes saved:', {
+                propertyId,
+                sharedRent: property.sharedRent,
+                privateRent: property.privateRent,
+                availableRooms: property.availableRooms,
+                totalPhotos: property.photos.length
+            });
+
+            alert(`Changes saved for ${property.title}!\n\nAvailable Rooms: ${availableCount}/${property.totalRooms}\nShared Rate: $${property.sharedRent}/month\nPrivate Rate: $${property.privateRent}/month\nPhotos: ${property.photos.length} uploaded`);
+
             closePropertyModal();
             loadProperties();
         }
@@ -495,52 +742,40 @@
         function loadProperties() {
             const propertiesList = document.getElementById('propertiesList');
 
-            const properties = [
-                {
-                    id: 'property-1',
-                    title: 'Spacious 3B2B Near Campus',
-                    availableRooms: 3,
-                    totalRooms: 3,
-                    sharedRent: 600,
-                    privateRent: 1150,
-                    active: true
-                },
-                {
-                    id: 'property-2',
-                    title: 'Spacious 5B3B Near Campus',
-                    availableRooms: 2,
-                    totalRooms: 5,
-                    sharedRent: 600,
-                    privateRent: 1150,
-                    active: true
-                }
-            ];
+            const properties = Object.values(propertyData);
 
             propertiesList.innerHTML = properties.map(prop => `
                 <div class="property-card-dashboard">
-                    <div style="display: flex; justify-content: space-between; align-items: start;">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
                         <h3 style="margin: 0;">${prop.title}</h3>
                         <button onclick="manageProperty('${prop.id}')"
-                                style="background: #4285f4; color: white; padding: 6px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">
+                                style="background: #4285f4; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 0.9rem;">
                             Manage
                         </button>
                     </div>
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 15px;">
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
                         <div>
-                            <strong>Rooms:</strong> ${prop.availableRooms} / ${prop.totalRooms} available
+                            <div style="font-size: 0.85rem; color: #5f6368; margin-bottom: 3px;">Rooms</div>
+                            <strong style="font-size: 1.1rem;">${prop.availableRooms} / ${prop.totalRooms}</strong>
+                            <span style="font-size: 0.85rem; color: #5f6368;"> available</span>
                         </div>
                         <div>
-                            <strong>Shared:</strong> $${prop.sharedRent}/month
+                            <div style="font-size: 0.85rem; color: #5f6368; margin-bottom: 3px;">Shared</div>
+                            <strong style="font-size: 1.1rem; color: #34a853;">$${prop.sharedRent}</strong>
+                            <span style="font-size: 0.85rem; color: #5f6368;">/month</span>
                         </div>
                         <div>
-                            <strong>Private:</strong> $${prop.privateRent}/month
+                            <div style="font-size: 0.85rem; color: #5f6368; margin-bottom: 3px;">Private</div>
+                            <strong style="font-size: 1.1rem; color: #34a853;">$${prop.privateRent}</strong>
+                            <span style="font-size: 0.85rem; color: #5f6368;">/month</span>
                         </div>
                     </div>
-                    <div style="margin-top: 15px;">
+                    <div style="margin-top: 15px; display: flex; align-items: center; gap: 15px;">
                         <span class="status-badge ${prop.active ? 'status-approved' : 'status-rejected'}">
                             ${prop.active ? 'Active' : 'Inactive'}
                         </span>
-                        <a href="${prop.id}.html" target="_blank" style="margin-left: 10px; color: #4285f4; text-decoration: none;">View Live →</a>
+                        ${prop.photos.length > 0 ? `<span style="font-size: 0.85rem; color: #5f6368;">📸 ${prop.photos.length} photos</span>` : ''}
+                        <a href="${prop.id}.html" target="_blank" style="margin-left: auto; color: #4285f4; text-decoration: none; font-size: 0.9rem;">View Live →</a>
                     </div>
                 </div>
             `).join('');
