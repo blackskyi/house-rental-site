@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Rent - Campus Rentals</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        .payment-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+        .payment-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .payment-header h1 {
+            color: #4285f4;
+            margin-bottom: 10px;
+        }
+        .payment-summary {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        .summary-row.total {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #dadce0;
+            color: #202124;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #202124;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #4285f4;
+            box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.1);
+        }
+        .pay-btn {
+            width: 100%;
+            background: #34a853;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .pay-btn:hover {
+            background: #2d8e47;
+        }
+        .pay-btn:disabled {
+            background: #dadce0;
+            cursor: not-allowed;
+        }
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #5f6368;
+        }
+        .error-message {
+            background: #fce8e6;
+            color: #ea4335;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .success-message {
+            background: #e6f4ea;
+            color: #34a853;
+            padding: 20px;
+            border-radius: 4px;
+            text-align: center;
+            display: none;
+        }
+        .info-box {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #4285f4;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #202124;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: start;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+        }
+        .checkbox-group label {
+            font-size: 0.9rem;
+            color: #5f6368;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="back-link">← Back to Home</a>
+            <h1>Pay Your Rent</h1>
+            <p class="subtitle">Secure monthly rent payments through Campus Rentals</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="payment-container">
+            <div class="payment-header">
+                <h1>💳 Pay Rent</h1>
+                <p style="color: #5f6368;">Fast, secure, and convenient</p>
+            </div>
+
+            <div class="info-box">
+                <strong>🔒 100% Secure Payment</strong><br>
+                Your payment information is encrypted and processed by Stripe, the same technology trusted by Amazon, Google, and Shopify. We never see or store your card details.
+            </div>
+
+            <div id="errorMessage" class="error-message"></div>
+            <div id="successMessage" class="success-message"></div>
+
+            <form id="paymentForm">
+                <div class="form-group">
+                    <label for="propertySelect">Select Your Property *</label>
+                    <select id="propertySelect" required>
+                        <option value="">Choose your rental property...</option>
+                        <option value="property-1" data-rent="600" data-shared="600" data-private="1150">Spacious 3B2B Near Campus - Sara</option>
+                        <option value="property-2" data-rent="600" data-shared="600" data-private="1150">Spacious 5B3B Near Campus - Sara</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="roomType">Room Type *</label>
+                    <select id="roomType" required>
+                        <option value="">Select room type...</option>
+                        <option value="shared">Shared Room</option>
+                        <option value="private">Private Room</option>
+                    </select>
+                </div>
+
+                <div class="payment-summary" id="paymentSummary" style="display: none;">
+                    <h3 style="margin-top: 0; margin-bottom: 15px;">Payment Summary</h3>
+                    <div class="summary-row">
+                        <span>Monthly Rent:</span>
+                        <span id="rentAmount">$0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span style="font-size: 0.85rem; color: #5f6368;">Processing via Campus Rentals Platform</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total Due Today:</span>
+                        <span id="totalAmount">$0</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="tenantName">Full Name *</label>
+                    <input type="text" id="tenantName" placeholder="John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tenantEmail">Email Address *</label>
+                    <input type="email" id="tenantEmail" placeholder="john@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tenantPhone">Phone Number *</label>
+                    <input type="tel" id="tenantPhone" placeholder="(555) 123-4567" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="paymentMonth">Payment For Month *</label>
+                    <select id="paymentMonth" required>
+                        <option value="">Select month...</option>
+                    </select>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="autopay" name="autopay">
+                    <label for="autopay">
+                        <strong>Enable autopay</strong> - Automatically charge this card on the 1st of each month.
+                        You can cancel anytime.
+                    </label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                    <label for="agreeTerms">
+                        I agree to the <a href="terms.html" target="_blank">Terms of Service</a> and authorize Campus Rentals
+                        to process this payment. I understand a 12% platform fee is included in the rent amount paid to the property owner.
+                    </label>
+                </div>
+
+                <button type="submit" class="pay-btn" id="payButton">
+                    🔒 Pay Securely with Stripe
+                </button>
+
+                <div class="secure-badge">
+                    <span>🔒</span>
+                    <span>Secured by Stripe | 256-bit SSL encryption</span>
+                </div>
+            </form>
+
+            <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 6px; font-size: 0.85rem; color: #5f6368;">
+                <strong>How it works:</strong>
+                <ol style="margin: 10px 0; padding-left: 20px;">
+                    <li>Enter your information and select your property</li>
+                    <li>Click "Pay Securely with Stripe"</li>
+                    <li>Enter your card details on Stripe's secure page</li>
+                    <li>Receive instant receipt via email</li>
+                    <li>Your landlord receives payment within 1-2 business days</li>
+                </ol>
+                <p style="margin: 10px 0 0 0;"><strong>Need help?</strong> Contact support: gokulprasannak@gmail.com</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Campus Rentals. All rights reserved. | <a href="terms.html" style="color: white;">Terms</a> | <a href="privacy.html" style="color: white;">Privacy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // TODO: Replace with your Stripe publishable key
+        const STRIPE_PUBLISHABLE_KEY = 'pk_test_YOUR_KEY_HERE';
+        const stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+
+        // Generate month options (current + next 3 months)
+        const monthSelect = document.getElementById('paymentMonth');
+        const today = new Date();
+        for (let i = 0; i < 4; i++) {
+            const date = new Date(today.getFullYear(), today.getMonth() + i, 1);
+            const monthName = date.toLocaleString('default', { month: 'long', year: 'numeric' });
+            const value = date.toISOString().slice(0, 7); // YYYY-MM format
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = monthName;
+            monthSelect.appendChild(option);
+        }
+
+        // Update payment summary when property/room changes
+        document.getElementById('propertySelect').addEventListener('change', updateSummary);
+        document.getElementById('roomType').addEventListener('change', updateSummary);
+
+        function updateSummary() {
+            const propertySelect = document.getElementById('propertySelect');
+            const roomType = document.getElementById('roomType').value;
+            const selectedOption = propertySelect.options[propertySelect.selectedIndex];
+
+            if (!propertySelect.value || !roomType) {
+                document.getElementById('paymentSummary').style.display = 'none';
+                return;
+            }
+
+            const rent = roomType === 'shared'
+                ? parseInt(selectedOption.dataset.shared)
+                : parseInt(selectedOption.dataset.private);
+
+            document.getElementById('rentAmount').textContent = `$${rent}`;
+            document.getElementById('totalAmount').textContent = `$${rent}`;
+            document.getElementById('paymentSummary').style.display = 'block';
+        }
+
+        // Handle payment form submission
+        document.getElementById('paymentForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const payButton = document.getElementById('payButton');
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+
+            // Hide previous messages
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+
+            // Disable button
+            payButton.disabled = true;
+            payButton.textContent = 'Processing...';
+
+            try {
+                // Get form data
+                const propertySelect = document.getElementById('propertySelect');
+                const roomType = document.getElementById('roomType').value;
+                const selectedOption = propertySelect.options[propertySelect.selectedIndex];
+
+                const rent = roomType === 'shared'
+                    ? parseInt(selectedOption.dataset.shared)
+                    : parseInt(selectedOption.dataset.private);
+
+                const paymentData = {
+                    propertyId: propertySelect.value,
+                    propertyName: selectedOption.textContent,
+                    roomType: roomType,
+                    amount: rent,
+                    tenantName: document.getElementById('tenantName').value,
+                    tenantEmail: document.getElementById('tenantEmail').value,
+                    tenantPhone: document.getElementById('tenantPhone').value,
+                    paymentMonth: document.getElementById('paymentMonth').value,
+                    autopay: document.getElementById('autopay').checked
+                };
+
+                // TODO: Call your backend to create Stripe checkout session
+                // For now, show demo message
+                console.log('Payment data:', paymentData);
+
+                // Demo: Show error that Stripe is not configured yet
+                throw new Error('Stripe integration not yet configured. Please contact admin to set up payment processing.');
+
+                // REAL CODE (uncomment when backend is ready):
+                /*
+                const response = await fetch('/api/create-payment-session', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(paymentData)
+                });
+
+                const session = await response.json();
+
+                if (session.error) {
+                    throw new Error(session.error);
+                }
+
+                // Redirect to Stripe Checkout
+                const result = await stripe.redirectToCheckout({
+                    sessionId: session.id
+                });
+
+                if (result.error) {
+                    throw new Error(result.error.message);
+                }
+                */
+
+            } catch (error) {
+                errorMessage.textContent = error.message;
+                errorMessage.style.display = 'block';
+                payButton.disabled = false;
+                payButton.textContent = '🔒 Pay Securely with Stripe';
+
+                // Scroll to error
+                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+    </script>
+</body>
+</html>

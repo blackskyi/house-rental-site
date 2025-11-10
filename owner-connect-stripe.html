@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Bank Account - Campus Rentals</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .connect-container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+        .connect-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .connect-header h1 {
+            color: #4285f4;
+            margin-bottom: 10px;
+        }
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #5f6368;
+        }
+        .step.active {
+            color: #4285f4;
+            font-weight: 500;
+        }
+        .step-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #dadce0;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        .step.active .step-number {
+            background: #4285f4;
+        }
+        .step.completed .step-number {
+            background: #34a853;
+        }
+        .info-box {
+            background: #e8f4fd;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #4285f4;
+            margin-bottom: 30px;
+        }
+        .info-box h3 {
+            margin-top: 0;
+            color: #4285f4;
+        }
+        .info-box ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .info-box li {
+            margin-bottom: 8px;
+        }
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .benefit-card {
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        .benefit-card h4 {
+            color: #34a853;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .connect-btn {
+            width: 100%;
+            background: #34a853;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .connect-btn:hover {
+            background: #2d8e47;
+        }
+        .connect-btn:disabled {
+            background: #dadce0;
+            cursor: not-allowed;
+        }
+        .security-note {
+            background: #e6f4ea;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #5f6368;
+            text-align: center;
+        }
+        .fee-breakdown {
+            background: #fff9e6;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #f9ab00;
+            margin: 20px 0;
+        }
+        .fee-breakdown h4 {
+            color: #f9ab00;
+            margin-top: 0;
+        }
+        .fee-breakdown table {
+            width: 100%;
+            margin-top: 15px;
+        }
+        .fee-breakdown td {
+            padding: 8px 0;
+        }
+        .fee-breakdown .total-row {
+            border-top: 2px solid #f9ab00;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="owner-dashboard.html" class="back-link">← Back to Dashboard</a>
+            <h1>Connect Your Bank Account</h1>
+            <p class="subtitle">Start receiving rent payments directly to your account</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="connect-container">
+            <div class="connect-header">
+                <h1>💰 Get Paid Automatically</h1>
+                <p style="color: #5f6368;">Connect your bank account to receive rent payments</p>
+            </div>
+
+            <div class="step-indicator">
+                <div class="step active">
+                    <div class="step-number">1</div>
+                    <span>Review</span>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <span>Connect</span>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <span>Verify</span>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3>🚀 Why Connect Your Bank Account?</h3>
+                <ul>
+                    <li><strong>Automatic payments</strong> - Rent is deposited directly to your account</li>
+                    <li><strong>Fast transfers</strong> - Receive payments within 1-2 business days</li>
+                    <li><strong>No manual work</strong> - Platform handles all payment processing</li>
+                    <li><strong>100% secure</strong> - Bank-level encryption via Stripe</li>
+                    <li><strong>Free setup</strong> - No upfront costs or monthly fees</li>
+                </ul>
+            </div>
+
+            <div class="fee-breakdown">
+                <h4>💵 Payment Structure</h4>
+                <p style="margin: 10px 0; font-size: 0.9rem;">
+                    Here's exactly how payments work with Campus Rentals:
+                </p>
+                <table>
+                    <tr>
+                        <td>Tenant pays monthly rent:</td>
+                        <td style="text-align: right;"><strong>$1,200.00</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Platform transaction fee (12%):</td>
+                        <td style="text-align: right; color: #f9ab00;"><strong>-$144.00</strong></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 0.85rem; color: #5f6368; padding-left: 20px;">
+                            • Marketing & lead generation<br>
+                            • Payment processing<br>
+                            • Platform support
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr class="total-row">
+                        <td>You receive:</td>
+                        <td style="text-align: right; color: #34a853;"><strong>$1,056.00</strong></td>
+                    </tr>
+                </table>
+                <p style="margin: 15px 0 0 0; font-size: 0.85rem; color: #5f6368;">
+                    <strong>Note:</strong> The 12% platform fee covers tenant placement, marketing, application processing,
+                    payment collection, and ongoing platform support. Traditional property managers charge 8-10% monthly
+                    and you still handle applications yourself.
+                </p>
+            </div>
+
+            <div class="benefit-grid">
+                <div class="benefit-card">
+                    <h4>📊 Tax Ready</h4>
+                    <p style="font-size: 0.9rem; color: #5f6368; margin: 0;">
+                        Automatic 1099 generation. All payments tracked and documented for easy tax filing.
+                    </p>
+                </div>
+                <div class="benefit-card">
+                    <h4>📧 Instant Notifications</h4>
+                    <p style="font-size: 0.9rem; color: #5f6368; margin: 0;">
+                        Get email alerts for every payment. Track payment history in your dashboard.
+                    </p>
+                </div>
+                <div class="benefit-card">
+                    <h4>🔄 Recurring Payments</h4>
+                    <p style="font-size: 0.9rem; color: #5f6368; margin: 0;">
+                        Set up autopay for tenants. Automatic rent collection on the 1st of each month.
+                    </p>
+                </div>
+                <div class="benefit-card">
+                    <h4>🛡️ Dispute Protection</h4>
+                    <p style="font-size: 0.9rem; color: #5f6368; margin: 0;">
+                        Stripe handles chargebacks and disputes. Your funds are protected.
+                    </p>
+                </div>
+            </div>
+
+            <button onclick="connectStripe()" class="connect-btn" id="connectBtn">
+                🔒 Connect with Stripe
+            </button>
+
+            <div class="security-note">
+                <strong>🔒 Bank-Level Security</strong><br>
+                Your banking information is secured by Stripe, trusted by millions of businesses worldwide.
+                Campus Rentals never sees or stores your bank account details.
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 6px; font-size: 0.85rem; color: #5f6368;">
+                <strong>What happens next?</strong>
+                <ol style="margin: 10px 0; padding-left: 20px;">
+                    <li>Click "Connect with Stripe" above</li>
+                    <li>You'll be redirected to Stripe's secure page</li>
+                    <li>Enter your business/personal information</li>
+                    <li>Connect your bank account (routing & account number)</li>
+                    <li>Stripe verifies your identity (takes 1-2 business days)</li>
+                    <li>Start receiving rent payments automatically!</li>
+                </ol>
+                <p style="margin: 10px 0 0 0;"><strong>Questions?</strong> Contact support: gokulprasannak@gmail.com</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Campus Rentals. All rights reserved. | <a href="terms.html" style="color: white;">Terms</a> | <a href="privacy.html" style="color: white;">Privacy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Check if logged in
+        if (sessionStorage.getItem('ownerLoggedIn') !== 'true') {
+            window.location.href = 'owner-login.html';
+        }
+
+        const ownerName = sessionStorage.getItem('ownerName');
+        const ownerId = sessionStorage.getItem('ownerId');
+
+        // TODO: Replace with your Stripe Connect client ID
+        const STRIPE_CLIENT_ID = 'ca_YOUR_CLIENT_ID_HERE';
+
+        function connectStripe() {
+            const connectBtn = document.getElementById('connectBtn');
+            connectBtn.disabled = true;
+            connectBtn.textContent = 'Redirecting to Stripe...';
+
+            // Store owner info for callback
+            sessionStorage.setItem('stripeConnectInProgress', 'true');
+
+            // TODO: Redirect to Stripe Connect OAuth flow
+            // For now, show demo message
+            alert('Stripe Connect integration not yet configured.\n\nPlease contact admin to:\n1. Create Stripe account\n2. Enable Stripe Connect\n3. Get Client ID\n\nThen this button will redirect you to Stripe\'s secure onboarding flow.');
+
+            connectBtn.disabled = false;
+            connectBtn.textContent = '🔒 Connect with Stripe';
+
+            // REAL CODE (uncomment when Stripe is configured):
+            /*
+            const redirectUri = window.location.origin + '/stripe-callback.html';
+            const state = btoa(JSON.stringify({
+                ownerId: ownerId,
+                ownerName: ownerName,
+                timestamp: Date.now()
+            }));
+
+            const stripeConnectUrl = `https://connect.stripe.com/oauth/authorize?` +
+                `response_type=code&` +
+                `client_id=${STRIPE_CLIENT_ID}&` +
+                `scope=read_write&` +
+                `redirect_uri=${encodeURIComponent(redirectUri)}&` +
+                `state=${state}`;
+
+            window.location.href = stripeConnectUrl;
+            */
+        }
+
+        // Check if returning from Stripe Connect
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('success')) {
+            alert('✅ Bank account connected successfully!\n\nYou can now receive rent payments directly to your account.');
+            window.location.href = 'owner-dashboard.html';
+        } else if (urlParams.has('error')) {
+            alert('❌ Connection failed: ' + (urlParams.get('error_description') || 'Unknown error'));
+        }
+    </script>
+</body>
+</html>
