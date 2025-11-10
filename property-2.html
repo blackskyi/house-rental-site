@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Property 2 - House for Rent</title>
+    <title>Spacious 5B3B Near Campus - House for Rent</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,8 +13,8 @@
     <header>
         <div class="container">
             <a href="index.html" class="back-link">← Back to All Properties</a>
-            <h1>Property 2 Title</h1>
-            <p class="subtitle">Add your subtitle here</p>
+            <h1>Spacious 5B3B Near Campus</h1>
+            <p class="subtitle">Private rooms with attached baths</p>
         </div>
     </header>
 
@@ -25,50 +25,202 @@
             <div class="details-grid">
                 <div class="detail-item">
                     <span class="label">Monthly Rent:</span>
-                    <span class="value">$[Amount]</span>
+                    <span class="value">$600/room</span>
                 </div>
                 <div class="detail-item">
                     <span class="label">Deposit:</span>
-                    <span class="value">[Amount]</span>
+                    <span class="value">Contact for details</span>
                 </div>
                 <div class="detail-item">
                     <span class="label">Available From:</span>
-                    <span class="value">[Date]</span>
+                    <span class="value">Late December 2025</span>
                 </div>
                 <div class="detail-item">
                     <span class="label">Lease Term:</span>
-                    <span class="value">[Term]</span>
+                    <span class="value">Flexible</span>
                 </div>
             </div>
 
             <div class="property-description-full">
-                <p>[Add your property description here]</p>
+                <p>Huge room with attached bath in a spacious 5B3B house.</p>
             </div>
 
             <div class="amenities">
                 <h3>Features of the House</h3>
                 <ul>
-                    <li>[Feature 1]</li>
-                    <li>[Feature 2]</li>
-                    <li>[Feature 3]</li>
-                    <li>[Add more features]</li>
+                    <li>Free In-house laundry</li>
+                    <li>Spacious common areas (Kitchen, living room)</li>
+                    <li>Backyard with a gazebo and bonfire space</li>
+                    <li>Parking for 3 cars</li>
+                    <li>Gated house with a yard with much greenery</li>
+                    <li>One block away from campus</li>
+                    <li>Usual amenities like stove, refrigerator, oven, microwave</li>
+                    <li>Air-conditioned rooms</li>
                 </ul>
             </div>
         </section>
 
-        <!-- Photo Gallery -->
+        <!-- Room Availability -->
+        <section class="room-availability">
+            <h2>Room Availability</h2>
+            <div class="rooms-grid">
+                <div class="room-card available">
+                    <div class="room-status">Available</div>
+                    <h3>Room 1</h3>
+                    <p>$600/month</p>
+                </div>
+                <div class="room-card available">
+                    <div class="room-status">Available</div>
+                    <h3>Room 2</h3>
+                    <p>$600/month</p>
+                </div>
+                <div class="room-card taken">
+                    <div class="room-status">Taken</div>
+                    <h3>Room 3</h3>
+                    <p>$600/month</p>
+                </div>
+                <div class="room-card taken">
+                    <div class="room-status">Taken</div>
+                    <h3>Room 4</h3>
+                    <p>$600/month</p>
+                </div>
+                <div class="room-card taken">
+                    <div class="room-status">Taken</div>
+                    <h3>Room 5</h3>
+                    <p>$600/month</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- House Tour Video -->
         <section class="gallery">
-            <h2>Photo Gallery</h2>
-            <div class="gallery-grid" id="photoGallery">
-                <div class="gallery-placeholder">
-                    <p>Add your property 2 photos to the assets/images/property-2 folder</p>
-                </div>
-                <!-- Add images like this:
+            <h2>House Tour Video</h2>
+            <div class="video-container">
+                <video controls>
+                    <source src="assets/videos/property-2/house-tour.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+
+        <!-- Photo Gallery - Organized by Area -->
+        <section class="gallery">
+            <h2>House Front</h2>
+            <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="assets/images/property-2/image-name.jpg" alt="Description" onclick="openModal(this.src)">
-                    <p class="photo-caption">Caption</p>
+                    <img src="assets/images/property-2/house-front/1.jpg" alt="House Front" onclick="openModal(this.src)">
                 </div>
-                -->
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h2>Room 1</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/images/property-2/room-1/1.jpg" alt="Room 1 - View 1" onclick="openModal(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/property-2/room-1/2.jpg" alt="Room 1 - View 2" onclick="openModal(this.src)">
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h2>Room 2 (with attached bath)</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/images/property-2/room-2/1.jpg" alt="Room 2 - View 1" onclick="openModal(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/property-2/room-2/2.jpg" alt="Room 2 - View 2" onclick="openModal(this.src)">
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h2>Room 3 (Taken)</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/images/property-2/room-3/1.jpg" alt="Room 3" onclick="openModal(this.src)">
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h2>Room 4 (Taken)</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/images/property-2/room-4/1.jpg" alt="Room 4" onclick="openModal(this.src)">
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h2>Room 5 (Taken)</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/images/property-2/room-5/1.jpg" alt="Room 5" onclick="openModal(this.src)">
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h2>Kitchen</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/images/property-2/kitchen/1.jpg" alt="Kitchen - View 1" onclick="openModal(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/property-2/kitchen/2.jpg" alt="Kitchen - View 2" onclick="openModal(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/property-2/kitchen/3.jpg" alt="Kitchen - View 3" onclick="openModal(this.src)">
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h2>Bathroom</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/images/property-2/bathroom/1.jpg" alt="Bathroom - View 1" onclick="openModal(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/property-2/bathroom/2.jpg" alt="Bathroom - View 2" onclick="openModal(this.src)">
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h2>Hallway (Upstairs)</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/images/property-2/hallway/1.jpg" alt="Hallway" onclick="openModal(this.src)">
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h2>Closet</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/images/property-2/closet/1.jpg" alt="Closet" onclick="openModal(this.src)">
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h2>Backyard</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/images/property-2/backyard/1.jpg" alt="Backyard - View 1" onclick="openModal(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/property-2/backyard/2.jpg" alt="Backyard - View 2" onclick="openModal(this.src)">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/property-2/backyard/3.jpg" alt="Backyard - View 3" onclick="openModal(this.src)">
+                </div>
             </div>
         </section>
 
@@ -78,7 +230,7 @@
             <p>Interested in viewing this property? Fill out the form below and we'll send you the details.</p>
 
             <form id="applicationForm">
-                <input type="hidden" id="propertyName" name="propertyName" value="Property 2">
+                <input type="hidden" id="propertyName" name="propertyName" value="Spacious 5B3B Near Campus">
 
                 <div class="form-group">
                     <label for="fullName">Full Name *</label>
@@ -156,7 +308,7 @@
             <p>Book a time to view the property in person.</p>
             <div class="calendly-container">
                 <p class="calendly-placeholder">
-                    To enable scheduling, add your Calendly link here
+                    To enable scheduling, add your Calendly link in property-2.html
                 </p>
             </div>
         </section>

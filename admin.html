@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - House Rental</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .admin-login {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .admin-dashboard {
+            display: none;
+        }
+        .admin-section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .room-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ea4335;
+            transition: .4s;
+            border-radius: 30px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #34a853;
+        }
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+        .logout-btn {
+            background: #ea4335;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+        .save-btn {
+            background: #34a853;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .instructions {
+            background: #e8f4fd;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #4285f4;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Form -->
+        <div id="loginForm" class="admin-login">
+            <h2 style="text-align: center; color: #4285f4; margin-bottom: 30px;">Admin Login</h2>
+            <form onsubmit="return login(event)">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="submit-btn" style="width: 100%;">Login</button>
+                <div id="loginError" style="color: #ea4335; margin-top: 10px; display: none;">Incorrect password</div>
+            </form>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="dashboard" class="admin-dashboard">
+            <header style="background: linear-gradient(135deg, #4285f4 0%, #3367d6 100%); color: white; padding: 30px 20px; margin: -20px -20px 40px -20px; border-radius: 8px;">
+                <h1>Property Management Dashboard</h1>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </header>
+
+            <div class="instructions">
+                <h3 style="margin-top: 0;">Instructions</h3>
+                <p><strong>Important:</strong> After making changes, you need to manually update the HTML files:</p>
+                <ol>
+                    <li>Toggle room availability switches below</li>
+                    <li>Note which rooms changed status</li>
+                    <li>Open the corresponding property HTML file (property-1.html or property-2.html)</li>
+                    <li>Find the room card and change class="room-card available" to class="room-card taken" (or vice versa)</li>
+                    <li>Change the room-status div text from "Available" to "Taken" (or vice versa)</li>
+                    <li>Save and push changes to GitHub</li>
+                </ol>
+                <p><em>This dashboard helps you track changes. For a fully automated system, you'd need a backend database.</em></p>
+            </div>
+
+            <!-- Property 1 -->
+            <div class="admin-section">
+                <h2>Property 1: Spacious 3B2B Near Campus</h2>
+                <p><strong>Rent:</strong> $600/month | <strong>Type:</strong> Private Room</p>
+
+                <div class="room-toggle">
+                    <div>
+                        <strong>Main Room</strong>
+                        <p style="margin: 0; color: #5f6368; font-size: 0.9rem;">Private room with attached bath</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked onchange="updateProperty1Status()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div id="property1Status" style="margin-top: 20px; padding: 15px; background: #e6f4ea; border-radius: 6px; color: #34a853;">
+                    <strong>Status:</strong> Available
+                </div>
+            </div>
+
+            <!-- Property 2 -->
+            <div class="admin-section">
+                <h2>Property 2: Spacious 5B3B Near Campus</h2>
+                <p><strong>Rent:</strong> $600/month per room | <strong>Type:</strong> 5 Private Rooms</p>
+
+                <div class="room-toggle">
+                    <strong>Room 1</strong>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="room1" checked onchange="updateProperty2Status()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="room-toggle">
+                    <strong>Room 2</strong>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="room2" checked onchange="updateProperty2Status()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="room-toggle">
+                    <strong>Room 3</strong>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="room3" onchange="updateProperty2Status()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="room-toggle">
+                    <strong>Room 4</strong>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="room4" onchange="updateProperty2Status()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="room-toggle">
+                    <strong>Room 5</strong>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="room5" onchange="updateProperty2Status()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div id="property2Status" style="margin-top: 20px; padding: 15px; background: #e6f4ea; border-radius: 6px; color: #34a853;">
+                    <strong>Available Rooms:</strong> 2 of 5
+                </div>
+            </div>
+
+            <div class="admin-section">
+                <h3>Quick Actions</h3>
+                <p>Download the current property status and update instructions:</p>
+                <button class="save-btn" onclick="downloadStatus()">Download Current Status</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple password protection (change this password!)
+        const ADMIN_PASSWORD = "houserental2025"; // CHANGE THIS PASSWORD!
+
+        function login(event) {
+            event.preventDefault();
+            const password = document.getElementById('password').value;
+
+            if (password === ADMIN_PASSWORD) {
+                document.getElementById('loginForm').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                loadSavedState();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+            return false;
+        }
+
+        function logout() {
+            sessionStorage.removeItem('adminLoggedIn');
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('password').value = '';
+        }
+
+        function updateProperty1Status() {
+            const toggle = document.querySelector('#dashboard .admin-section:nth-child(3) input[type="checkbox"]');
+            const statusDiv = document.getElementById('property1Status');
+
+            if (toggle.checked) {
+                statusDiv.style.background = '#e6f4ea';
+                statusDiv.style.color = '#34a853';
+                statusDiv.innerHTML = '<strong>Status:</strong> Available';
+            } else {
+                statusDiv.style.background = '#fce8e6';
+                statusDiv.style.color = '#ea4335';
+                statusDiv.innerHTML = '<strong>Status:</strong> Taken';
+            }
+            saveState();
+        }
+
+        function updateProperty2Status() {
+            const room1 = document.getElementById('room1').checked;
+            const room2 = document.getElementById('room2').checked;
+            const room3 = document.getElementById('room3').checked;
+            const room4 = document.getElementById('room4').checked;
+            const room5 = document.getElementById('room5').checked;
+
+            const available = [room1, room2, room3, room4, room5].filter(Boolean).length;
+
+            const statusDiv = document.getElementById('property2Status');
+            statusDiv.innerHTML = `<strong>Available Rooms:</strong> ${available} of 5`;
+
+            if (available === 0) {
+                statusDiv.style.background = '#fce8e6';
+                statusDiv.style.color = '#ea4335';
+            } else if (available <= 2) {
+                statusDiv.style.background = '#fef7e0';
+                statusDiv.style.color = '#f9ab00';
+            } else {
+                statusDiv.style.background = '#e6f4ea';
+                statusDiv.style.color = '#34a853';
+            }
+            saveState();
+        }
+
+        function saveState() {
+            const state = {
+                property1: document.querySelector('#dashboard .admin-section:nth-child(3) input[type="checkbox"]').checked,
+                room1: document.getElementById('room1').checked,
+                room2: document.getElementById('room2').checked,
+                room3: document.getElementById('room3').checked,
+                room4: document.getElementById('room4').checked,
+                room5: document.getElementById('room5').checked
+            };
+            localStorage.setItem('propertyState', JSON.stringify(state));
+        }
+
+        function loadSavedState() {
+            const saved = localStorage.getItem('propertyState');
+            if (saved) {
+                const state = JSON.parse(saved);
+                document.querySelector('#dashboard .admin-section:nth-child(3) input[type="checkbox"]').checked = state.property1;
+                document.getElementById('room1').checked = state.room1;
+                document.getElementById('room2').checked = state.room2;
+                document.getElementById('room3').checked = state.room3;
+                document.getElementById('room4').checked = state.room4;
+                document.getElementById('room5').checked = state.room5;
+
+                updateProperty1Status();
+                updateProperty2Status();
+            }
+        }
+
+        function downloadStatus() {
+            const state = JSON.parse(localStorage.getItem('propertyState') || '{}');
+            const text = `
+PROPERTY STATUS REPORT
+Generated: ${new Date().toLocaleString()}
+
+PROPERTY 1: Spacious 3B2B Near Campus
+Status: ${state.property1 ? 'AVAILABLE' : 'TAKEN'}
+
+PROPERTY 2: Spacious 5B3B Near Campus
+Room 1: ${state.room1 ? 'AVAILABLE' : 'TAKEN'}
+Room 2: ${state.room2 ? 'AVAILABLE' : 'TAKEN'}
+Room 3: ${state.room3 ? 'AVAILABLE' : 'TAKEN'}
+Room 4: ${state.room4 ? 'AVAILABLE' : 'TAKEN'}
+Room 5: ${state.room5 ? 'AVAILABLE' : 'TAKEN'}
+
+TO UPDATE THE WEBSITE:
+1. Edit property-2.html
+2. Find each room card
+3. Change class="room-card available" to class="room-card taken" (or vice versa)
+4. Change the status text accordingly
+5. Save and push to GitHub
+            `;
+
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'property-status-' + Date.now() + '.txt';
+            a.click();
+        }
+
+        // Check if already logged in
+        if (sessionStorage.getItem('adminLoggedIn') === 'true') {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            loadSavedState();
+        }
+    </script>
+</body>
+</html>
