@@ -141,21 +141,34 @@
             <!-- Property 1 -->
             <div class="admin-section">
                 <h2>Property 1: Spacious 3B2B Near Campus</h2>
-                <p><strong>Rent:</strong> $600/month | <strong>Type:</strong> Private Room</p>
+                <p><strong>Rent:</strong> $600/month per room | <strong>Type:</strong> 3 Private Rooms</p>
 
                 <div class="room-toggle">
-                    <div>
-                        <strong>Main Room</strong>
-                        <p style="margin: 0; color: #5f6368; font-size: 0.9rem;">Private room with attached bath</p>
-                    </div>
+                    <strong>Room 1</strong>
                     <label class="toggle-switch">
-                        <input type="checkbox" checked onchange="updateProperty1Status()">
+                        <input type="checkbox" id="prop1room1" checked onchange="updateProperty1Status()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="room-toggle">
+                    <strong>Room 2</strong>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="prop1room2" checked onchange="updateProperty1Status()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="room-toggle">
+                    <strong>Room 3</strong>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="prop1room3" checked onchange="updateProperty1Status()">
                         <span class="slider"></span>
                     </label>
                 </div>
 
                 <div id="property1Status" style="margin-top: 20px; padding: 15px; background: #e6f4ea; border-radius: 6px; color: #34a853;">
-                    <strong>Status:</strong> Available
+                    <strong>Available Rooms:</strong> 3 of 3
                 </div>
             </div>
 
@@ -244,17 +257,24 @@
         }
 
         function updateProperty1Status() {
-            const toggle = document.querySelector('#dashboard .admin-section:nth-child(3) input[type="checkbox"]');
-            const statusDiv = document.getElementById('property1Status');
+            const room1 = document.getElementById('prop1room1').checked;
+            const room2 = document.getElementById('prop1room2').checked;
+            const room3 = document.getElementById('prop1room3').checked;
 
-            if (toggle.checked) {
-                statusDiv.style.background = '#e6f4ea';
-                statusDiv.style.color = '#34a853';
-                statusDiv.innerHTML = '<strong>Status:</strong> Available';
-            } else {
+            const available = [room1, room2, room3].filter(Boolean).length;
+
+            const statusDiv = document.getElementById('property1Status');
+            statusDiv.innerHTML = `<strong>Available Rooms:</strong> ${available} of 3`;
+
+            if (available === 0) {
                 statusDiv.style.background = '#fce8e6';
                 statusDiv.style.color = '#ea4335';
-                statusDiv.innerHTML = '<strong>Status:</strong> Taken';
+            } else if (available <= 1) {
+                statusDiv.style.background = '#fef7e0';
+                statusDiv.style.color = '#f9ab00';
+            } else {
+                statusDiv.style.background = '#e6f4ea';
+                statusDiv.style.color = '#34a853';
             }
             saveState();
         }
@@ -286,7 +306,9 @@
 
         function saveState() {
             const state = {
-                property1: document.querySelector('#dashboard .admin-section:nth-child(3) input[type="checkbox"]').checked,
+                prop1room1: document.getElementById('prop1room1').checked,
+                prop1room2: document.getElementById('prop1room2').checked,
+                prop1room3: document.getElementById('prop1room3').checked,
                 room1: document.getElementById('room1').checked,
                 room2: document.getElementById('room2').checked,
                 room3: document.getElementById('room3').checked,
@@ -300,12 +322,14 @@
             const saved = localStorage.getItem('propertyState');
             if (saved) {
                 const state = JSON.parse(saved);
-                document.querySelector('#dashboard .admin-section:nth-child(3) input[type="checkbox"]').checked = state.property1;
-                document.getElementById('room1').checked = state.room1;
-                document.getElementById('room2').checked = state.room2;
-                document.getElementById('room3').checked = state.room3;
-                document.getElementById('room4').checked = state.room4;
-                document.getElementById('room5').checked = state.room5;
+                document.getElementById('prop1room1').checked = state.prop1room1 !== undefined ? state.prop1room1 : true;
+                document.getElementById('prop1room2').checked = state.prop1room2 !== undefined ? state.prop1room2 : true;
+                document.getElementById('prop1room3').checked = state.prop1room3 !== undefined ? state.prop1room3 : true;
+                document.getElementById('room1').checked = state.room1 !== undefined ? state.room1 : true;
+                document.getElementById('room2').checked = state.room2 !== undefined ? state.room2 : true;
+                document.getElementById('room3').checked = state.room3 !== undefined ? state.room3 : false;
+                document.getElementById('room4').checked = state.room4 !== undefined ? state.room4 : false;
+                document.getElementById('room5').checked = state.room5 !== undefined ? state.room5 : false;
 
                 updateProperty1Status();
                 updateProperty2Status();
@@ -319,17 +343,19 @@ PROPERTY STATUS REPORT
 Generated: ${new Date().toLocaleString()}
 
 PROPERTY 1: Spacious 3B2B Near Campus
-Status: ${state.property1 ? 'AVAILABLE' : 'TAKEN'}
+Room 1: ${state.prop1room1 !== false ? 'AVAILABLE' : 'TAKEN'}
+Room 2: ${state.prop1room2 !== false ? 'AVAILABLE' : 'TAKEN'}
+Room 3: ${state.prop1room3 !== false ? 'AVAILABLE' : 'TAKEN'}
 
 PROPERTY 2: Spacious 5B3B Near Campus
-Room 1: ${state.room1 ? 'AVAILABLE' : 'TAKEN'}
-Room 2: ${state.room2 ? 'AVAILABLE' : 'TAKEN'}
+Room 1: ${state.room1 !== false ? 'AVAILABLE' : 'TAKEN'}
+Room 2: ${state.room2 !== false ? 'AVAILABLE' : 'TAKEN'}
 Room 3: ${state.room3 ? 'AVAILABLE' : 'TAKEN'}
 Room 4: ${state.room4 ? 'AVAILABLE' : 'TAKEN'}
 Room 5: ${state.room5 ? 'AVAILABLE' : 'TAKEN'}
 
 TO UPDATE THE WEBSITE:
-1. Edit property-2.html
+1. Edit property-1.html and/or property-2.html
 2. Find each room card
 3. Change class="room-card available" to class="room-card taken" (or vice versa)
 4. Change the status text accordingly
