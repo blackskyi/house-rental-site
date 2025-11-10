@@ -325,6 +325,123 @@ footer p {
     }
 }
 
+/* Property Listing Styles */
+.properties-list {
+    padding: 20px 0;
+}
+
+.property-card {
+    background: var(--background);
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.property-card h3 {
+    color: var(--google-blue);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.property-description {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.property-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.highlight-item {
+    padding: 12px;
+    background: var(--background-alt);
+    border-radius: 6px;
+}
+
+.highlight-label {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 3px;
+}
+
+.highlight-value {
+    display: block;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.property-features {
+    margin-bottom: 20px;
+}
+
+.feature-tag {
+    display: inline-block;
+    background: var(--google-blue);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.view-details-btn {
+    display: inline-block;
+    background: var(--google-blue);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.view-details-btn:hover {
+    background: var(--primary-dark);
+}
+
+.back-link {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 15px;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.back-link:hover {
+    opacity: 1;
+}
+
+.property-description-full {
+    margin-bottom: 25px;
+}
+
+.property-description-full p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.photo-caption {
+    text-align: center;
+    margin-top: 8px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
 /* Image Modal */
 .modal {
     display: none;

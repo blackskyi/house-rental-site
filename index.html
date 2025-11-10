@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>House for Rent</title>
+    <title>Houses for Rent</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,165 +12,74 @@
 <body>
     <header>
         <div class="container">
-            <h1>Beautiful House for Rent</h1>
-            <p class="subtitle">Your next home awaits</p>
+            <h1>Available Rentals</h1>
+            <p class="subtitle">Find your perfect home</p>
         </div>
     </header>
 
     <main class="container">
-        <!-- Property Details -->
-        <section class="property-details">
-            <h2>Property Details</h2>
-            <div class="details-grid">
-                <div class="detail-item">
-                    <span class="label">Monthly Rent:</span>
-                    <span class="value">$[Enter Amount]</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Deposit:</span>
-                    <span class="value">$[Enter Amount]</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Available From:</span>
-                    <span class="value">[Enter Date]</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Lease Term:</span>
-                    <span class="value">[Enter Term]</span>
-                </div>
-            </div>
+        <section class="properties-list">
+            <h2>Available Properties</h2>
 
-            <div class="amenities">
-                <h3>Amenities</h3>
-                <ul>
-                    <li>Parking Available</li>
-                    <li>Pet Policy: [Enter Policy]</li>
-                    <li>Utilities: [Enter Details]</li>
-                    <li>Furnished/Unfurnished: [Enter Status]</li>
-                </ul>
-            </div>
+            <!-- Property Card 1 -->
+            <div class="property-card">
+                <div class="property-card-content">
+                    <div class="property-info">
+                        <h3>Spacious 3B2B Near Campus</h3>
+                        <p class="property-description">Huge room with attached bath in a spacious house. One block away from campus!</p>
 
-            <div class="location-info">
-                <h3>Location</h3>
-                <p><strong>Address:</strong> [Enter Address]</p>
-                <p><strong>Nearby:</strong> [Enter nearby amenities - transit, schools, shopping]</p>
-            </div>
-        </section>
+                        <div class="property-highlights">
+                            <div class="highlight-item">
+                                <span class="highlight-label">Rent:</span>
+                                <span class="highlight-value">$600/month</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-label">Type:</span>
+                                <span class="highlight-value">Private Room</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-label">Available:</span>
+                                <span class="highlight-value">Now</span>
+                            </div>
+                        </div>
 
-        <!-- Photo Gallery -->
-        <section class="gallery">
-            <h2>Photo Gallery</h2>
-            <div class="gallery-grid" id="photoGallery">
-                <!-- Photos will be loaded dynamically -->
-                <div class="gallery-placeholder">
-                    <p>Add your house photos to the assets/images folder</p>
+                        <div class="property-features">
+                            <span class="feature-tag">Free Laundry</span>
+                            <span class="feature-tag">Parking</span>
+                            <span class="feature-tag">Backyard</span>
+                            <span class="feature-tag">1 Block from Campus</span>
+                        </div>
+
+                        <a href="property-1.html" class="view-details-btn">View Details</a>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Video Gallery -->
-        <section class="gallery">
-            <h2>Video Tour</h2>
-            <div class="video-grid" id="videoGallery">
-                <!-- Videos will be loaded dynamically -->
-                <div class="gallery-placeholder">
-                    <p>Add your house videos to the assets/videos folder</p>
+            <!-- Property Card 2 - Placeholder -->
+            <div class="property-card">
+                <div class="property-card-content">
+                    <div class="property-info">
+                        <h3>Property 2</h3>
+                        <p class="property-description">Add your second property details here</p>
+
+                        <div class="property-highlights">
+                            <div class="highlight-item">
+                                <span class="highlight-label">Rent:</span>
+                                <span class="highlight-value">$[Amount]</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-label">Type:</span>
+                                <span class="highlight-value">[Type]</span>
+                            </div>
+                            <div class="highlight-item">
+                                <span class="highlight-label">Available:</span>
+                                <span class="highlight-value">[Date]</span>
+                            </div>
+                        </div>
+
+                        <a href="property-2.html" class="view-details-btn">View Details</a>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Application Form -->
-        <section class="application-form">
-            <h2>Apply to View</h2>
-            <p>Interested in viewing this property? Fill out the form below and we'll send you the details.</p>
-
-            <form id="applicationForm">
-                <div class="form-group">
-                    <label for="fullName">Full Name *</label>
-                    <input type="text" id="fullName" name="fullName" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="moveInDate">Desired Move-in Date *</label>
-                    <input type="date" id="moveInDate" name="moveInDate" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="occupants">Number of Occupants *</label>
-                    <input type="number" id="occupants" name="occupants" min="1" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="employment">Employment Status *</label>
-                    <select id="employment" name="employment" required>
-                        <option value="">Select...</option>
-                        <option value="employed">Employed</option>
-                        <option value="self-employed">Self-Employed</option>
-                        <option value="student">Student</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="income">Monthly Income *</label>
-                    <input type="text" id="income" name="income" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="pets">Do you have pets?</label>
-                    <select id="pets" name="pets">
-                        <option value="no">No</option>
-                        <option value="yes">Yes</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="petDetails">If yes, please specify:</label>
-                    <input type="text" id="petDetails" name="petDetails">
-                </div>
-
-                <div class="form-group">
-                    <label for="references">Previous Landlord Reference (Name & Contact)</label>
-                    <textarea id="references" name="references" rows="3"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Additional Information</label>
-                    <textarea id="message" name="message" rows="4"></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">Submit Application</button>
-            </form>
-
-            <div id="formMessage" class="form-message"></div>
-        </section>
-
-        <!-- Schedule Tour -->
-        <section class="schedule-tour">
-            <h2>Schedule a Tour</h2>
-            <p>Book a time to view the property in person.</p>
-            <div class="calendly-container">
-                <!-- Replace YOUR_CALENDLY_LINK with actual Calendly link -->
-                <p class="calendly-placeholder">
-                    To enable scheduling, add your Calendly link in index.html line 157
-                </p>
-                <!-- Uncomment and add your Calendly link:
-                <div class="calendly-inline-widget"
-                     data-url="YOUR_CALENDLY_LINK"
-                     style="min-width:320px;height:700px;">
-                </div>
-                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-                -->
             </div>
         </section>
 
@@ -187,7 +96,5 @@
             <p>&copy; 2025 House Rental. All rights reserved.</p>
         </div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>

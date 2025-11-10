@@ -78,11 +78,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('applicationForm');
     const formMessage = document.getElementById('formMessage');
 
+    if (!form) return; // Exit if no form on page
+
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
 
         // Collect form data
         const formData = {
+            propertyName: document.getElementById('propertyName')?.value || 'General Inquiry',
             fullName: document.getElementById('fullName').value,
             email: document.getElementById('email').value,
             phone: document.getElementById('phone').value,
