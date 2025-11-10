@@ -568,3 +568,37 @@ footer p {
         max-width: 100%;
     }
 }
+
+/* Owner Section Styles */
+.owner-section {
+    margin-bottom: 50px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 30px;
+}
+
+.owner-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--google-blue);
+}
+
+.owner-header h2 {
+    color: var(--google-blue);
+    font-size: 2rem;
+    margin-bottom: 10px;
+    border-bottom: none;
+}
+
+.owner-description {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.contact-note {
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: 0.95rem;
+}

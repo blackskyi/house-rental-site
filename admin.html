@@ -100,6 +100,78 @@
             border-left: 4px solid #4285f4;
             margin-bottom: 30px;
         }
+        .photo-preview-container {
+            margin-top: 20px;
+        }
+        .photo-preview-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #dadce0;
+        }
+        .photo-preview-thumbnail {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .photo-preview-info {
+            flex: 1;
+        }
+        .photo-preview-name {
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #202124;
+        }
+        .category-select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.95rem;
+        }
+        .upload-instructions {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #ffc107;
+            margin-top: 20px;
+        }
+        .upload-instructions h4 {
+            margin-top: 0;
+            color: #856404;
+        }
+        .upload-instructions code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        .generate-instructions-btn {
+            background: #4285f4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            margin-top: 15px;
+        }
+        .remove-photo-btn {
+            background: #ea4335;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
     </style>
 </head>
 <body>
@@ -189,12 +261,16 @@
                     <strong>Available Rooms:</strong> 3 of 3
                 </div>
 
-                <h3 style="margin-top: 20px;">Photos</h3>
+                <h3 style="margin-top: 20px;">Photo Management</h3>
                 <div class="form-group">
-                    <label for="prop1PhotoNotes">Photo Upload Notes</label>
-                    <textarea id="prop1PhotoNotes" onchange="saveState()" rows="3" placeholder="Track which photos you want to add/remove..." style="width: 100%; padding: 8px; border: 1px solid #dadce0; border-radius: 4px; font-family: 'Roboto', sans-serif;"></textarea>
-                    <p style="font-size: 0.85rem; color: #5f6368; margin-top: 5px;">Note: Photos must be manually added to assets/images/property-1/ folder</p>
+                    <label for="prop1PhotoUpload">Upload Photos</label>
+                    <input type="file" id="prop1PhotoUpload" accept="image/*" multiple onchange="handlePhotoUpload(event, 'property-1')" style="width: 100%; padding: 8px; border: 1px solid #dadce0; border-radius: 4px;">
+                    <p style="font-size: 0.85rem; color: #5f6368; margin-top: 5px;">Select multiple photos to upload</p>
                 </div>
+
+                <div id="prop1PhotoPreview" class="photo-preview-container"></div>
+
+                <div id="prop1UploadInstructions" class="upload-instructions" style="display: none;"></div>
             </div>
 
             <!-- Property 2 -->
@@ -264,12 +340,16 @@
                     <strong>Available Rooms:</strong> 2 of 5
                 </div>
 
-                <h3 style="margin-top: 20px;">Photos</h3>
+                <h3 style="margin-top: 20px;">Photo Management</h3>
                 <div class="form-group">
-                    <label for="prop2PhotoNotes">Photo Upload Notes</label>
-                    <textarea id="prop2PhotoNotes" onchange="saveState()" rows="3" placeholder="Track which photos you want to add/remove..." style="width: 100%; padding: 8px; border: 1px solid #dadce0; border-radius: 4px; font-family: 'Roboto', sans-serif;"></textarea>
-                    <p style="font-size: 0.85rem; color: #5f6368; margin-top: 5px;">Note: Photos must be manually added to assets/images/property-2/ folder</p>
+                    <label for="prop2PhotoUpload">Upload Photos</label>
+                    <input type="file" id="prop2PhotoUpload" accept="image/*" multiple onchange="handlePhotoUpload(event, 'property-2')" style="width: 100%; padding: 8px; border: 1px solid #dadce0; border-radius: 4px;">
+                    <p style="font-size: 0.85rem; color: #5f6368; margin-top: 5px;">Select multiple photos to upload</p>
                 </div>
+
+                <div id="prop2PhotoPreview" class="photo-preview-container"></div>
+
+                <div id="prop2UploadInstructions" class="upload-instructions" style="display: none;"></div>
             </div>
 
             <div class="admin-section">
@@ -363,7 +443,6 @@
                 prop1SharedRent: document.getElementById('prop1SharedRent').value,
                 prop1PrivateRent: document.getElementById('prop1PrivateRent').value,
                 prop1AvailDate: document.getElementById('prop1AvailDate').value,
-                prop1PhotoNotes: document.getElementById('prop1PhotoNotes').value,
                 // Property 2
                 room1: document.getElementById('room1').checked,
                 room2: document.getElementById('room2').checked,
@@ -372,8 +451,7 @@
                 room5: document.getElementById('room5').checked,
                 prop2SharedRent: document.getElementById('prop2SharedRent').value,
                 prop2PrivateRent: document.getElementById('prop2PrivateRent').value,
-                prop2AvailDate: document.getElementById('prop2AvailDate').value,
-                prop2PhotoNotes: document.getElementById('prop2PhotoNotes').value
+                prop2AvailDate: document.getElementById('prop2AvailDate').value
             };
             localStorage.setItem('propertyState', JSON.stringify(state));
         }
@@ -389,7 +467,6 @@
                 document.getElementById('prop1SharedRent').value = state.prop1SharedRent || '600';
                 document.getElementById('prop1PrivateRent').value = state.prop1PrivateRent || '1150';
                 document.getElementById('prop1AvailDate').value = state.prop1AvailDate || 'Mid December';
-                document.getElementById('prop1PhotoNotes').value = state.prop1PhotoNotes || '';
                 // Property 2
                 document.getElementById('room1').checked = state.room1 !== undefined ? state.room1 : true;
                 document.getElementById('room2').checked = state.room2 !== undefined ? state.room2 : true;
@@ -399,7 +476,6 @@
                 document.getElementById('prop2SharedRent').value = state.prop2SharedRent || '600';
                 document.getElementById('prop2PrivateRent').value = state.prop2PrivateRent || '1150';
                 document.getElementById('prop2AvailDate').value = state.prop2AvailDate || 'Mid December';
-                document.getElementById('prop2PhotoNotes').value = state.prop2PhotoNotes || '';
 
                 updateProperty1Status();
                 updateProperty2Status();
@@ -495,6 +571,324 @@ AFTER MAKING CHANGES:
             a.href = url;
             a.download = 'property-status-' + Date.now() + '.txt';
             a.click();
+        }
+
+        // Photo categories based on Sara's properties structure
+        const PHOTO_CATEGORIES = {
+            'property-1': [
+                { value: 'ungrouped', label: '-- Select Category --' },
+                { value: 'room-1', label: 'Room 1' },
+                { value: 'room-2', label: 'Room 2' },
+                { value: 'room-3', label: 'Room 3' },
+                { value: 'kitchen', label: 'Kitchen' },
+                { value: 'bathroom', label: 'Bathroom' },
+                { value: 'living-room', label: 'Living Room' },
+                { value: 'backyard', label: 'Backyard' },
+                { value: 'house-front', label: 'House Front' },
+                { value: 'hallway', label: 'Hallway' },
+                { value: 'closet', label: 'Closet' }
+            ],
+            'property-2': [
+                { value: 'ungrouped', label: '-- Select Category --' },
+                { value: 'house-front', label: 'House Front' },
+                { value: 'room-1', label: 'Room 1' },
+                { value: 'room-2', label: 'Room 2' },
+                { value: 'room-3', label: 'Room 3' },
+                { value: 'room-4', label: 'Room 4' },
+                { value: 'room-5', label: 'Room 5' },
+                { value: 'kitchen', label: 'Kitchen' },
+                { value: 'bathroom', label: 'Bathroom' },
+                { value: 'hallway', label: 'Hallway (Upstairs)' },
+                { value: 'closet', label: 'Closet' },
+                { value: 'backyard', label: 'Backyard' }
+            ]
+        };
+
+        // Store uploaded photos data
+        let uploadedPhotos = {
+            'property-1': [],
+            'property-2': []
+        };
+
+        function handlePhotoUpload(event, propertyId) {
+            const files = event.target.files;
+            const previewContainer = document.getElementById(propertyId === 'property-1' ? 'prop1PhotoPreview' : 'prop2PhotoPreview');
+
+            if (files.length === 0) return;
+
+            // Clear previous uploads for this property
+            uploadedPhotos[propertyId] = [];
+            previewContainer.innerHTML = '';
+
+            // Process each file
+            Array.from(files).forEach((file, index) => {
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    const photoData = {
+                        id: `${propertyId}-photo-${Date.now()}-${index}`,
+                        fileName: file.name,
+                        fileSize: (file.size / 1024).toFixed(2) + ' KB',
+                        dataUrl: e.target.result,
+                        category: 'ungrouped'
+                    };
+
+                    uploadedPhotos[propertyId].push(photoData);
+                    renderPhotoPreview(propertyId, photoData);
+                };
+
+                reader.readAsDataURL(file);
+            });
+
+            // Show generate instructions button after upload
+            setTimeout(() => {
+                showGenerateInstructionsButton(propertyId);
+            }, 500);
+        }
+
+        function renderPhotoPreview(propertyId, photoData) {
+            const previewContainer = document.getElementById(propertyId === 'property-1' ? 'prop1PhotoPreview' : 'prop2PhotoPreview');
+            const categories = PHOTO_CATEGORIES[propertyId];
+
+            const previewItem = document.createElement('div');
+            previewItem.className = 'photo-preview-item';
+            previewItem.id = photoData.id;
+
+            previewItem.innerHTML = `
+                <img src="${photoData.dataUrl}" alt="${photoData.fileName}" class="photo-preview-thumbnail">
+                <div class="photo-preview-info">
+                    <div class="photo-preview-name">${photoData.fileName}</div>
+                    <div style="font-size: 0.85rem; color: #5f6368; margin-bottom: 10px;">${photoData.fileSize}</div>
+                    <select class="category-select" onchange="updatePhotoCategory('${propertyId}', '${photoData.id}', this.value)">
+                        ${categories.map(cat => `<option value="${cat.value}" ${cat.value === photoData.category ? 'selected' : ''}>${cat.label}</option>`).join('')}
+                    </select>
+                </div>
+                <button class="remove-photo-btn" onclick="removePhoto('${propertyId}', '${photoData.id}')">Remove</button>
+            `;
+
+            previewContainer.appendChild(previewItem);
+        }
+
+        function updatePhotoCategory(propertyId, photoId, category) {
+            const photo = uploadedPhotos[propertyId].find(p => p.id === photoId);
+            if (photo) {
+                photo.category = category;
+                // Re-show generate instructions button
+                showGenerateInstructionsButton(propertyId);
+            }
+        }
+
+        function removePhoto(propertyId, photoId) {
+            // Remove from data
+            uploadedPhotos[propertyId] = uploadedPhotos[propertyId].filter(p => p.id !== photoId);
+
+            // Remove from UI
+            const element = document.getElementById(photoId);
+            if (element) {
+                element.remove();
+            }
+
+            // Update instructions
+            if (uploadedPhotos[propertyId].length === 0) {
+                const instructionsDiv = document.getElementById(propertyId === 'property-1' ? 'prop1UploadInstructions' : 'prop2UploadInstructions');
+                instructionsDiv.style.display = 'none';
+            } else {
+                showGenerateInstructionsButton(propertyId);
+            }
+        }
+
+        function showGenerateInstructionsButton(propertyId) {
+            const instructionsDiv = document.getElementById(propertyId === 'property-1' ? 'prop1UploadInstructions' : 'prop2UploadInstructions');
+
+            instructionsDiv.style.display = 'block';
+            instructionsDiv.innerHTML = `
+                <h4>Photos Ready to Upload</h4>
+                <p>You have ${uploadedPhotos[propertyId].length} photo(s) ready. Click the button below to generate git commit instructions.</p>
+                <button class="generate-instructions-btn" onclick="generateUploadInstructions('${propertyId}')">Generate Upload Instructions</button>
+            `;
+        }
+
+        function generateUploadInstructions(propertyId) {
+            const photos = uploadedPhotos[propertyId];
+            const propertyName = propertyId === 'property-1' ? 'Property 1 (3B2B)' : 'Property 2 (5B3B)';
+
+            // Group photos by category
+            const categorized = {};
+            const ungrouped = [];
+
+            photos.forEach(photo => {
+                if (photo.category === 'ungrouped') {
+                    ungrouped.push(photo);
+                } else {
+                    if (!categorized[photo.category]) {
+                        categorized[photo.category] = [];
+                    }
+                    categorized[photo.category].push(photo);
+                }
+            });
+
+            let instructions = `
+═══════════════════════════════════════════════════════
+PHOTO UPLOAD INSTRUCTIONS FOR ${propertyName}
+Generated: ${new Date().toLocaleString()}
+═══════════════════════════════════════════════════════
+
+STEP 1: SAVE PHOTOS TO YOUR COMPUTER
+────────────────────────────────────────────────────────
+
+The photos are currently only in your browser. You need to:
+1. Right-click each photo thumbnail above
+2. Select "Save Image As..."
+3. Save with the original filename
+
+OR use your original photo files from your device.
+
+STEP 2: ORGANIZE PHOTOS INTO FOLDERS
+────────────────────────────────────────────────────────
+
+Create the following folder structure in your project:
+
+assets/images/${propertyId}/
+`;
+
+            // Add categorized photos
+            Object.keys(categorized).forEach(category => {
+                instructions += `├── ${category}/\n`;
+                categorized[category].forEach((photo, idx) => {
+                    const newFileName = `${idx + 1}.jpg`;
+                    instructions += `│   └── ${newFileName}  (from ${photo.fileName})\n`;
+                });
+            });
+
+            if (ungrouped.length > 0) {
+                instructions += `\n⚠️  UNGROUPED PHOTOS (need category assignment):\n`;
+                ungrouped.forEach(photo => {
+                    instructions += `   - ${photo.fileName}\n`;
+                });
+            }
+
+            instructions += `\n
+STEP 3: COPY PHOTOS TO THE CORRECT FOLDERS
+────────────────────────────────────────────────────────
+
+For each category folder:
+1. Navigate to: assets/images/${propertyId}/[category-name]/
+2. Copy the photo into that folder
+3. Rename it to match the number (1.jpg, 2.jpg, 3.jpg, etc.)
+
+Example:
+`;
+
+            if (Object.keys(categorized).length > 0) {
+                const firstCategory = Object.keys(categorized)[0];
+                const firstPhotos = categorized[firstCategory];
+                instructions += `  assets/images/${propertyId}/${firstCategory}/1.jpg\n`;
+                if (firstPhotos.length > 1) {
+                    instructions += `  assets/images/${propertyId}/${firstCategory}/2.jpg\n`;
+                }
+            }
+
+            instructions += `\nSTEP 4: UPDATE HTML FILE
+────────────────────────────────────────────────────────
+
+Edit ${propertyId}.html and add photo sections for each category:
+
+`;
+
+            Object.keys(categorized).forEach(category => {
+                const photos = categorized[category];
+                const categoryLabel = PHOTO_CATEGORIES[propertyId].find(c => c.value === category)?.label || category;
+
+                instructions += `
+<!-- ${categoryLabel} Section -->
+<section class="gallery">
+    <h2>${categoryLabel}</h2>
+    <div class="gallery-grid">
+`;
+                photos.forEach((photo, idx) => {
+                    instructions += `        <div class="gallery-item">
+            <img src="assets/images/${propertyId}/${category}/${idx + 1}.jpg" alt="${categoryLabel} - View ${idx + 1}" onclick="openModal(this.src)">
+        </div>
+`;
+                });
+                instructions += `    </div>
+</section>
+
+`;
+            });
+
+            instructions += `
+STEP 5: COMMIT TO GIT
+────────────────────────────────────────────────────────
+
+Run these commands in your terminal:
+
+1. Add all new photos:
+   git add assets/images/${propertyId}/
+
+2. Add the updated HTML file:
+   git add ${propertyId}.html
+
+3. Commit the changes:
+   git commit -m "Add ${photos.length} photos to ${propertyName}"
+
+4. Push to GitHub:
+   git push
+
+5. Railway will auto-deploy in 2-3 minutes
+
+
+VERIFICATION CHECKLIST
+────────────────────────────────────────────────────────
+
+✓ All photos saved from browser
+✓ Photos organized into correct category folders
+✓ Photos renamed to numbers (1.jpg, 2.jpg, etc.)
+✓ HTML file updated with new gallery sections
+✓ Git add, commit, push completed
+✓ Checked deployed site after 2-3 minutes
+
+═══════════════════════════════════════════════════════
+PHOTO SUMMARY
+═══════════════════════════════════════════════════════
+
+Total Photos: ${photos.length}
+Categorized: ${photos.length - ungrouped.length}
+Ungrouped: ${ungrouped.length}
+
+${Object.keys(categorized).map(cat => {
+    const label = PHOTO_CATEGORIES[propertyId].find(c => c.value === cat)?.label || cat;
+    return `${label}: ${categorized[cat].length} photo(s)`;
+}).join('\n')}
+
+${ungrouped.length > 0 ? `\n⚠️  WARNING: ${ungrouped.length} photo(s) not categorized!
+Go back and assign categories using the dropdowns above.\n` : ''}
+
+═══════════════════════════════════════════════════════
+`;
+
+            // Download instructions as text file
+            const blob = new Blob([instructions], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${propertyId}-photo-upload-instructions-${Date.now()}.txt`;
+            a.click();
+
+            // Show success message
+            const instructionsDiv = document.getElementById(propertyId === 'property-1' ? 'prop1UploadInstructions' : 'prop2UploadInstructions');
+            instructionsDiv.innerHTML = `
+                <h4>✓ Instructions Downloaded!</h4>
+                <p>Follow the instructions in the downloaded text file to complete the photo upload.</p>
+                <p style="margin-top: 15px;"><strong>Summary:</strong></p>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li>${photos.length} total photo(s)</li>
+                    <li>${photos.length - ungrouped.length} categorized</li>
+                    <li>${ungrouped.length} ungrouped ${ungrouped.length > 0 ? '⚠️' : '✓'}</li>
+                </ul>
+                ${ungrouped.length > 0 ? '<p style="color: #ea4335;"><strong>Warning:</strong> Assign categories to ungrouped photos before uploading!</p>' : ''}
+                <button class="generate-instructions-btn" onclick="generateUploadInstructions('${propertyId}')">Re-generate Instructions</button>
+            `;
         }
 
         // Check if already logged in

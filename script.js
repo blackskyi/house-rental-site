@@ -85,6 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Collect form data
         const formData = {
             propertyName: document.getElementById('propertyName')?.value || 'General Inquiry',
+            propertyOwner: document.getElementById('propertyOwner')?.value || 'Unknown',
+            ownerEmail: document.getElementById('ownerEmail')?.value || CONFIG.RECIPIENT_EMAIL,
             fullName: document.getElementById('fullName').value,
             email: document.getElementById('email').value,
             phone: document.getElementById('phone').value,
@@ -96,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
             petDetails: document.getElementById('petDetails').value,
             references: document.getElementById('references').value,
             message: document.getElementById('message').value,
+            availability: document.getElementById('availability')?.value || '',
             submittedAt: new Date().toLocaleString(),
             recipientEmail: CONFIG.RECIPIENT_EMAIL
         };
