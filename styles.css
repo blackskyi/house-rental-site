@@ -551,12 +551,20 @@ footer p {
 /* Video Container */
 .video-container {
     margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .video-container video {
     width: 100%;
-    max-width: 800px;
+    max-width: 500px;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 768px) {
+    .video-container video {
+        max-width: 100%;
+    }
 }
