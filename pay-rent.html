@@ -345,15 +345,9 @@
                     autopay: document.getElementById('autopay').checked
                 };
 
-                // TODO: Call your backend to create Stripe checkout session
-                // For now, show demo message
+                // Call backend to create Stripe checkout session
                 console.log('Payment data:', paymentData);
 
-                // Demo: Show error that Stripe is not configured yet
-                throw new Error('Stripe integration not yet configured. Please contact admin to set up payment processing.');
-
-                // REAL CODE (uncomment when backend is ready):
-                /*
                 const response = await fetch('/api/create-payment-session', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -374,7 +368,6 @@
                 if (result.error) {
                     throw new Error(result.error.message);
                 }
-                */
 
             } catch (error) {
                 errorMessage.textContent = error.message;
