@@ -1,14 +1,20 @@
-# Use nginx to serve static files
-FROM nginx:alpine
+# Use Node.js LTS version
+FROM node:18-alpine
 
-# Copy website files to nginx html directory
-COPY *.html /usr/share/nginx/html/
-COPY *.css /usr/share/nginx/html/
-COPY *.js /usr/share/nginx/html/
-COPY assets /usr/share/nginx/html/assets
+# Set working directory
+WORKDIR /app
 
-# Expose port 80
-EXPOSE 80
+# Copy package files
+COPY package*.json ./
 
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Install dependencies
+RUN npm ci --only=production
+
+# Copy application files
+COPY . .
+
+# Expose port (Railway will set PORT env var)
+EXPOSE 3000
+
+# Start the server
+CMD ["node", "server.js"]
