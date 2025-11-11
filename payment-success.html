@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - Campus Rentals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .success-container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            background: #34a853;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        .checkmark svg {
+            width: 50px;
+            height: 50px;
+            stroke: white;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            animation: drawCheck 0.5s ease-out 0.2s forwards;
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes drawCheck {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #202124;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #5f6368;
+            margin-bottom: 30px;
+        }
+
+        .receipt-info {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e8eaed;
+        }
+
+        .receipt-row:last-child {
+            border-bottom: none;
+            font-weight: 600;
+            font-size: 18px;
+            color: #202124;
+        }
+
+        .receipt-label {
+            color: #5f6368;
+        }
+
+        .receipt-value {
+            color: #202124;
+            font-weight: 500;
+        }
+
+        .info-box {
+            background: #e8f0fe;
+            border-left: 4px solid #1a73e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: left;
+            font-size: 14px;
+            color: #1967d2;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #1a73e8;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1557b0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1a73e8;
+            border: 2px solid #1a73e8;
+        }
+
+        .btn-secondary:hover {
+            background: #f8f9fa;
+        }
+
+        .loader {
+            text-align: center;
+            color: #5f6368;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #1a73e8;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div id="loading" class="loader">
+            <div class="spinner"></div>
+            <p>Verifying your payment...</p>
+        </div>
+
+        <div id="successContent" style="display: none;">
+            <div class="checkmark">
+                <svg viewBox="0 0 52 52">
+                    <polyline points="14 27 22 35 38 19"/>
+                </svg>
+            </div>
+
+            <h1>Payment Successful!</h1>
+            <p class="subtitle">Your rent payment has been processed</p>
+
+            <div class="receipt-info">
+                <div class="receipt-row">
+                    <span class="receipt-label">Property</span>
+                    <span class="receipt-value" id="propertyName">-</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">Room Type</span>
+                    <span class="receipt-value" id="roomType">-</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">Payment Month</span>
+                    <span class="receipt-value" id="paymentMonth">-</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">Email</span>
+                    <span class="receipt-value" id="email">-</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">Amount Paid</span>
+                    <span class="receipt-value" id="amount">-</span>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <strong>Receipt Sent!</strong><br>
+                A confirmation email has been sent to your email address. Please save it for your records.
+            </div>
+
+            <div class="button-group">
+                <a href="index.html" class="btn btn-secondary">Back to Home</a>
+                <a href="pay-rent.html" class="btn btn-primary">Make Another Payment</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        // Get session ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session_id');
+
+        if (!sessionId) {
+            document.getElementById('loading').innerHTML = '<p style="color: #ea4335;">Error: No session ID found</p>';
+        } else {
+            // Fetch session details
+            fetch(`/api/payment-session/${sessionId}`)
+                .then(response => response.json())
+                .then(session => {
+                    // Hide loading, show success
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('successContent').style.display = 'block';
+
+                    // Populate receipt info
+                    const metadata = session.metadata || {};
+                    document.getElementById('propertyName').textContent = metadata.propertyName || 'N/A';
+                    document.getElementById('roomType').textContent = metadata.roomType || 'N/A';
+                    document.getElementById('paymentMonth').textContent = metadata.paymentMonth || 'N/A';
+                    document.getElementById('email').textContent = session.customer_email || metadata.tenantEmail || 'N/A';
+                    document.getElementById('amount').textContent = `$${(session.amount_total / 100).toFixed(2)}`;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('loading').innerHTML = '<p style="color: #ea4335;">Error loading payment details</p>';
+                });
+        }
+    </script>
+</body>
+</html>

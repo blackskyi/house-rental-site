@@ -141,11 +141,12 @@ app.post('/api/create-payment-session', async (req, res) => {
         const ownerId = 'sara-001'; // Hardcoded for MVP
         const owner = connectedOwners[ownerId];
 
-        if (!owner || !owner.stripeAccountId) {
-            return res.status(400).json({
-                error: 'Property owner has not connected their bank account yet'
-            });
-        }
+        // TEMPORARY: Skip Connect requirement for testing basic payments
+        // if (!owner || !owner.stripeAccountId) {
+        //     return res.status(400).json({
+        //         error: 'Property owner has not connected their bank account yet'
+        //     });
+        // }
 
         // Calculate platform fee (12% of rent)
         const platformFeeAmount = Math.round(amount * 0.12 * 100); // Convert to cents
@@ -169,12 +170,13 @@ app.post('/api/create-payment-session', async (req, res) => {
                 quantity: 1,
             }],
 
-            // Platform fee - 12% goes to us
+            // TEMPORARY: Disabled platform fee split until Connect is set up
+            // Platform fee - 12% goes to us, 88% to owner
             payment_intent_data: {
-                application_fee_amount: platformFeeAmount,
-                transfer_data: {
-                    destination: owner.stripeAccountId, // Owner receives 88%
-                },
+                // application_fee_amount: platformFeeAmount,
+                // transfer_data: {
+                //     destination: owner.stripeAccountId,
+                // },
                 metadata: {
                     propertyId,
                     propertyName,
