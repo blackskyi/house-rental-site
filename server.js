@@ -18,7 +18,14 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
-app.use(express.json());
+// Parse JSON for all routes EXCEPT webhook (webhook needs raw body for signature verification)
+app.use((req, res, next) => {
+    if (req.originalUrl === '/webhook/stripe') {
+        next();
+    } else {
+        express.json()(req, res, next);
+    }
+});
 app.use(express.static('.')); // Serve static files
 
 // In-memory storage (replace with database in production)
