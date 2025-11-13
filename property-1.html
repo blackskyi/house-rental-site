@@ -243,10 +243,13 @@
 
     <!-- Map Initialization -->
     <script>
-        // Property coordinates (example: near campus area)
-        // Owner/Admin can update these coordinates
-        const propertyLat = 40.8075;  // Latitude
-        const propertyLng = -73.9626; // Longitude
+        // Load coordinates from admin settings (localStorage) or use defaults
+        const defaultLocation = { lat: 40.8075, lng: -73.9626, desc: "One block from campus" };
+        const savedLocation = JSON.parse(localStorage.getItem('property1Location')) || defaultLocation;
+
+        const propertyLat = savedLocation.lat;
+        const propertyLng = savedLocation.lng;
+        const propertyDesc = savedLocation.desc;
         const propertyName = "Spacious 3B2B Near Campus";
 
         // Initialize the map
@@ -265,7 +268,7 @@
         marker.bindPopup(`
             <div style="text-align: center;">
                 <strong style="font-size: 1.1em;">${propertyName}</strong><br>
-                <span style="color: #666;">One block from campus</span><br>
+                <span style="color: #666;">${propertyDesc}</span><br>
                 <a href="contact.html" style="color: var(--primary); text-decoration: none; margin-top: 5px; display: inline-block;">
                     Contact for exact address
                 </a>
