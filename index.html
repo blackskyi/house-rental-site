@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="new-design">
     <!-- Navigation -->
@@ -82,34 +83,34 @@
             <div class="portal-cards-grid">
                 <!-- Availability Card -->
                 <a href="availability.html" class="portal-card">
-                    <div class="portal-icon">🏠</div>
+                    <div class="portal-icon"><i class="fas fa-home"></i></div>
                     <h3>Availability</h3>
                     <p>Browse our current available properties and find your perfect home</p>
-                    <span class="portal-link-arrow">→</span>
+                    <span class="portal-link-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
 
                 <!-- Tenant Portal Card -->
                 <a href="tenant-login.html" class="portal-card">
-                    <div class="portal-icon">👤</div>
+                    <div class="portal-icon"><i class="fas fa-user"></i></div>
                     <h3>Tenant Portal</h3>
                     <p>Pay rent, submit maintenance requests, and manage your account</p>
-                    <span class="portal-link-arrow">→</span>
+                    <span class="portal-link-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
 
                 <!-- Owner Portal Card -->
                 <a href="owner-login.html" class="portal-card">
-                    <div class="portal-icon">🔑</div>
+                    <div class="portal-icon"><i class="fas fa-key"></i></div>
                     <h3>Owner Portal</h3>
                     <p>Manage your properties, view reports, and track payments</p>
-                    <span class="portal-link-arrow">→</span>
+                    <span class="portal-link-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
 
                 <!-- Contact Card -->
                 <a href="contact.html" class="portal-card">
-                    <div class="portal-icon">📞</div>
+                    <div class="portal-icon"><i class="fas fa-phone"></i></div>
                     <h3>Contact Us</h3>
                     <p>Get in touch with our team for questions or assistance</p>
-                    <span class="portal-link-arrow">→</span>
+                    <span class="portal-link-arrow"><i class="fas fa-arrow-right"></i></span>
                 </a>
             </div>
         </div>
@@ -121,22 +122,22 @@
             <h2 class="section-title">Our Management Services</h2>
             <div class="services-grid">
                 <div class="service-item">
-                    <div class="service-icon">🏘️</div>
+                    <div class="service-icon"><i class="fas fa-building"></i></div>
                     <h3>Property Management</h3>
                     <p>Full-service property management for residential rentals</p>
                 </div>
                 <div class="service-item">
-                    <div class="service-icon">🔧</div>
+                    <div class="service-icon"><i class="fas fa-tools"></i></div>
                     <h3>Maintenance</h3>
                     <p>24/7 maintenance support for all our properties</p>
                 </div>
                 <div class="service-item">
-                    <div class="service-icon">💳</div>
+                    <div class="service-icon"><i class="fas fa-credit-card"></i></div>
                     <h3>Rent Collection</h3>
                     <p>Secure online rent payment processing</p>
                 </div>
                 <div class="service-item">
-                    <div class="service-icon">📋</div>
+                    <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
                     <h3>Tenant Screening</h3>
                     <p>Thorough background and credit checks</p>
                 </div>
@@ -196,9 +197,9 @@
                 <div class="footer-column">
                     <h4>Contact</h4>
                     <ul class="footer-contact">
-                        <li>📍 Near Campus</li>
-                        <li>📧 gokulprasannak@gmail.com</li>
-                        <li>🕐 Mon-Fri: 9am-6pm</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Near Campus</li>
+                        <li><i class="fas fa-envelope"></i> gokulprasannak@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9am-6pm</li>
                     </ul>
                 </div>
             </div>
@@ -260,15 +261,15 @@
                         <p class="property-description">${prop.description}</p>
                         <div class="property-stats">
                             <div class="stat-item">
-                                <span class="stat-icon">🛏️</span>
+                                <span class="stat-icon"><i class="fas fa-bed"></i></span>
                                 <span class="stat-text">${prop.rooms} Rooms</span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-icon">🚿</span>
+                                <span class="stat-icon"><i class="fas fa-bath"></i></span>
                                 <span class="stat-text">${prop.baths} Baths</span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-icon">💰</span>
+                                <span class="stat-icon"><i class="fas fa-dollar-sign"></i></span>
                                 <span class="stat-text">From $${prop.sharedRent}/mo</span>
                             </div>
                         </div>
