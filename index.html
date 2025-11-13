@@ -225,7 +225,8 @@
                 availableFrom: 'Mid December',
                 features: ['Free Laundry', 'Parking', 'Backyard', '1 Block from Campus'],
                 link: 'property-1.html',
-                city: 'Campus Area'
+                city: 'Campus Area',
+                image: 'assets/images/property-1/room-1.jpg'
             },
             {
                 id: 'property-2',
@@ -240,7 +241,8 @@
                 availableFrom: 'Mid December',
                 features: ['Air-Conditioned', 'Free Laundry', 'Parking', 'Backyard with Gazebo'],
                 link: 'property-2.html',
-                city: 'Campus Area'
+                city: 'Campus Area',
+                image: 'assets/images/property-2/house-front/1.jpg'
             }
         ];
 
@@ -249,31 +251,34 @@
             const container = document.getElementById('newestListingsContainer');
             container.innerHTML = allProperties.map(prop => `
                 <div class="property-card-modern">
-                    <div class="property-header">
-                        <h3>${prop.title}</h3>
-                        <div class="property-badge">${prop.availableRooms} Available</div>
-                    </div>
-                    <p class="property-description">${prop.description}</p>
-                    <div class="property-stats">
-                        <div class="stat-item">
-                            <span class="stat-icon">🛏️</span>
-                            <span class="stat-text">${prop.rooms} Rooms</span>
+                    <img src="${prop.image}" alt="${prop.title}" class="property-card-image">
+                    <div class="property-card-content">
+                        <div class="property-header">
+                            <h3>${prop.title}</h3>
+                            <div class="property-badge">${prop.availableRooms} Available</div>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-icon">🚿</span>
-                            <span class="stat-text">${prop.baths} Baths</span>
+                        <p class="property-description">${prop.description}</p>
+                        <div class="property-stats">
+                            <div class="stat-item">
+                                <span class="stat-icon">🛏️</span>
+                                <span class="stat-text">${prop.rooms} Rooms</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">🚿</span>
+                                <span class="stat-text">${prop.baths} Baths</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-icon">💰</span>
+                                <span class="stat-text">From $${prop.sharedRent}/mo</span>
+                            </div>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-icon">💰</span>
-                            <span class="stat-text">From $${prop.sharedRent}/mo</span>
+                        <div class="property-features-list">
+                            ${prop.features.slice(0, 3).map(f => `<span class="feature-chip">${f}</span>`).join('')}
                         </div>
-                    </div>
-                    <div class="property-features-list">
-                        ${prop.features.slice(0, 3).map(f => `<span class="feature-chip">${f}</span>`).join('')}
-                    </div>
-                    <div class="property-footer">
-                        <span class="available-date">Available: ${prop.availableFrom}</span>
-                        <a href="${prop.link}" class="view-btn">View Details</a>
+                        <div class="property-footer">
+                            <span class="available-date">Available: ${prop.availableFrom}</span>
+                            <a href="${prop.link}" class="view-btn">View Details</a>
+                        </div>
                     </div>
                 </div>
             `).join('');
