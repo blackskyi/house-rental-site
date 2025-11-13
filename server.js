@@ -16,6 +16,13 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Log environment info
+console.log('Environment:', {
+    NODE_ENV: process.env.NODE_ENV,
+    PORT: PORT,
+    hasStripe: !!process.env.STRIPE_SECRET_KEY
+});
+
 // Middleware
 app.use(cors());
 // Parse JSON for all routes EXCEPT webhook (webhook needs raw body for signature verification)
@@ -325,10 +332,12 @@ app.get('/api/owner/:ownerId/payments', async (req, res) => {
 // ===============================
 
 app.get('/health', (req, res) => {
-    res.json({
+    console.log('Health check received');
+    res.status(200).json({
         status: 'OK',
         timestamp: new Date().toISOString(),
-        stripe: !!process.env.STRIPE_SECRET_KEY
+        stripe: !!process.env.STRIPE_SECRET_KEY,
+        uptime: process.uptime()
     });
 });
 
@@ -336,7 +345,7 @@ app.get('/health', (req, res) => {
 // START SERVER
 // ===============================
 
-app.listen(PORT, '0.0.0.0', () => {
+const server = app.listen(PORT, '0.0.0.0', () => {
     console.log(`
     ╔═══════════════════════════════════════╗
     ║   Campus Rentals Payment Server      ║
@@ -354,6 +363,28 @@ app.listen(PORT, '0.0.0.0', () => {
     ${process.env.STRIPE_CLIENT_ID ? '✅' : '❌'} Stripe Connect configured
     ${process.env.STRIPE_WEBHOOK_SECRET ? '✅' : '❌'} Webhook secret configured
     `);
+});
+
+// Handle server errors
+server.on('error', (error) => {
+    console.error('Server error:', error);
+    process.exit(1);
+});
+
+// Graceful shutdown
+process.on('SIGTERM', () => {
+    console.log('SIGTERM signal received: closing HTTP server');
+    server.close(() => {
+        console.log('HTTP server closed');
+    });
+});
+
+process.on('SIGINT', () => {
+    console.log('SIGINT signal received: closing HTTP server');
+    server.close(() => {
+        console.log('HTTP server closed');
+        process.exit(0);
+    });
 });
 
 module.exports = app;
