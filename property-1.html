@@ -6,6 +6,8 @@
     <title>Spacious 3B2B Near Campus - House for Rent</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
 <body>
     <header>
@@ -104,6 +106,16 @@
                     <p class="photo-caption">Room 2</p>
                 </div>
             </div>
+        </section>
+
+        <!-- Location Map -->
+        <section class="property-location">
+            <h2>Property Location</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 20px;">This property is conveniently located one block from campus.</p>
+            <div id="propertyMap" style="height: 400px; width: 100%; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);"></div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 15px; font-style: italic;">
+                <i class="fas fa-info-circle"></i> Map shows approximate location. Exact address will be provided upon application approval.
+            </p>
         </section>
 
         <!-- Application Form -->
@@ -225,6 +237,41 @@
             <p>&copy; 2025 House Rental. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- Map Initialization -->
+    <script>
+        // Property coordinates (example: near campus area)
+        // Owner/Admin can update these coordinates
+        const propertyLat = 40.8075;  // Latitude
+        const propertyLng = -73.9626; // Longitude
+        const propertyName = "Spacious 3B2B Near Campus";
+
+        // Initialize the map
+        const map = L.map('propertyMap').setView([propertyLat, propertyLng], 15);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Add a marker for the property
+        const marker = L.marker([propertyLat, propertyLng]).addTo(map);
+
+        // Add popup to the marker
+        marker.bindPopup(`
+            <div style="text-align: center;">
+                <strong style="font-size: 1.1em;">${propertyName}</strong><br>
+                <span style="color: #666;">One block from campus</span><br>
+                <a href="contact.html" style="color: var(--primary); text-decoration: none; margin-top: 5px; display: inline-block;">
+                    Contact for exact address
+                </a>
+            </div>
+        `).openPopup();
+    </script>
 
     <script src="script.js"></script>
 </body>
