@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Availability - OG Properties</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="new-design">
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-text">OG PROPERTIES</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="availability.html" class="active">AVAILABILITY</a></li>
+                    <li><a href="services.html">SERVICES</a></li>
+                    <li><a href="residents.html">RESIDENTS</a></li>
+                    <li><a href="owners.html">OWNERS</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+                <button class="mobile-menu-toggle">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section style="background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%); padding: 60px 20px; text-align: center; color: white;">
+        <div class="container">
+            <h1 style="font-size: 2.5rem; margin-bottom: 10px; font-weight: 600;">Available Properties</h1>
+            <p style="font-size: 1.2rem; opacity: 0.9;">Find your perfect student housing</p>
+        </div>
+    </section>
+
+    <!-- Search & Filter Section -->
+    <section style="background: white; padding: 30px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <div class="container">
+            <h2 style="font-size: 1.5rem; margin-bottom: 20px; color: var(--text-primary);">Filter Properties</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <div class="form-group">
+                    <label for="searchPrice">Max Price</label>
+                    <select id="searchPrice" onchange="filterProperties()" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 4px;">
+                        <option value="">Any Price</option>
+                        <option value="700">Under $700</option>
+                        <option value="1000">Under $1000</option>
+                        <option value="1200">Under $1200</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="searchRooms">Bedrooms</label>
+                    <select id="searchRooms" onchange="filterProperties()" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 4px;">
+                        <option value="">Any</option>
+                        <option value="3">3 Rooms</option>
+                        <option value="5">5 Rooms</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="searchAmenities">Amenities</label>
+                    <select id="searchAmenities" onchange="filterProperties()" style="width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 4px;">
+                        <option value="">Any</option>
+                        <option value="Air-Conditioned">Air-Conditioned</option>
+                        <option value="Free Laundry">Free Laundry</option>
+                        <option value="Parking">Parking</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button onclick="resetFilters()" style="width: 100%; padding: 10px; background: var(--text-secondary); color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 24px;">Reset Filters</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties List -->
+    <main class="container" style="padding: 40px 20px;">
+        <div id="propertiesCount" style="margin-bottom: 20px; color: var(--text-secondary); font-size: 1.1rem;"></div>
+        <div id="propertiesContainer" style="display: grid; gap: 30px;"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>OG PROPERTIES</h4>
+                    <p>Quality student housing near campus. Providing comfortable, affordable, and convenient living spaces for students.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="availability.html">Availability</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Portals</h4>
+                    <ul class="footer-links">
+                        <li><a href="tenant-login.html">Tenant Portal</a></li>
+                        <li><a href="owner-login.html">Owner Portal</a></li>
+                        <li><a href="pay-rent.html">Pay Rent Online</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul class="footer-contact">
+                        <li>📍 Near Campus</li>
+                        <li>📧 gokulprasannak@gmail.com</li>
+                        <li>🕐 Mon-Fri: 9am-6pm</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 OG Properties. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Property data
+        const allProperties = [
+            {
+                id: 'property-1',
+                owner: 'Sara',
+                title: 'Spacious 3B2B Near Campus',
+                description: 'Huge room with attached bath in a spacious house. One block away from campus!',
+                sharedRent: 600,
+                privateRent: 1150,
+                rooms: 3,
+                baths: 2,
+                availableRooms: 3,
+                availableFrom: 'Mid December',
+                features: ['Free Laundry', 'Parking', 'Backyard', '1 Block from Campus'],
+                link: 'property-1.html'
+            },
+            {
+                id: 'property-2',
+                owner: 'Sara',
+                title: 'Spacious 5B3B Near Campus',
+                description: 'Huge rooms with attached baths in a spacious house. Air-conditioned rooms, one block from campus!',
+                sharedRent: 600,
+                privateRent: 1150,
+                rooms: 5,
+                baths: 3,
+                availableRooms: 2,
+                availableFrom: 'Mid December',
+                features: ['Air-Conditioned', 'Free Laundry', 'Parking', 'Backyard with Gazebo'],
+                link: 'property-2.html'
+            }
+        ];
+
+        function renderProperties(properties) {
+            const container = document.getElementById('propertiesContainer');
+            const countDiv = document.getElementById('propertiesCount');
+
+            countDiv.textContent = `Showing ${properties.length} ${properties.length === 1 ? 'property' : 'properties'}`;
+
+            if (properties.length === 0) {
+                container.innerHTML = '<div style="text-align: center; padding: 60px 20px; color: var(--text-secondary);"><h3>No properties match your filters</h3><p>Try adjusting your search criteria.</p></div>';
+                return;
+            }
+
+            container.innerHTML = properties.map(prop => `
+                <div class="property-card-modern">
+                    <div class="property-header">
+                        <h3>${prop.title}</h3>
+                        <div class="property-badge">${prop.availableRooms} Available</div>
+                    </div>
+                    <p class="property-description">${prop.description}</p>
+
+                    <div class="property-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">🛏️</span>
+                            <span class="stat-text">${prop.rooms} Bedrooms</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">🚿</span>
+                            <span class="stat-text">${prop.baths} Bathrooms</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">💰</span>
+                            <span class="stat-text">From $${prop.sharedRent}/mo</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 20px;">
+                        <div style="margin-bottom: 10px;">
+                            <strong style="color: var(--text-primary);">Pricing Options:</strong>
+                        </div>
+                        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                            <div style="background: var(--background-alt); padding: 10px 15px; border-radius: 6px; border-left: 3px solid var(--google-blue);">
+                                <div style="font-size: 0.85rem; color: var(--text-secondary);">Shared Spot</div>
+                                <div style="font-size: 1.1rem; font-weight: 600; color: var(--google-blue);">$${prop.sharedRent}/month</div>
+                            </div>
+                            <div style="background: var(--background-alt); padding: 10px 15px; border-radius: 6px; border-left: 3px solid var(--google-green);">
+                                <div style="font-size: 0.85rem; color: var(--text-secondary);">Private Room</div>
+                                <div style="font-size: 1.1rem; font-weight: 600; color: var(--google-green);">$${prop.privateRent}/month</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="property-features-list">
+                        ${prop.features.map(f => `<span class="feature-chip">${f}</span>`).join('')}
+                    </div>
+
+                    <div class="property-footer">
+                        <span class="available-date">Available: ${prop.availableFrom}</span>
+                        <a href="${prop.link}" class="view-btn">View Details & Apply</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterProperties() {
+            const maxPrice = document.getElementById('searchPrice').value;
+            const rooms = document.getElementById('searchRooms').value;
+            const amenity = document.getElementById('searchAmenities').value;
+
+            let filtered = allProperties;
+
+            if (maxPrice) {
+                filtered = filtered.filter(p => p.sharedRent <= parseInt(maxPrice));
+            }
+
+            if (rooms) {
+                filtered = filtered.filter(p => p.rooms == parseInt(rooms));
+            }
+
+            if (amenity) {
+                filtered = filtered.filter(p => p.features.includes(amenity));
+            }
+
+            renderProperties(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('searchPrice').value = '';
+            document.getElementById('searchRooms').value = '';
+            document.getElementById('searchAmenities').value = '';
+            renderProperties(allProperties);
+        }
+
+        // Check for URL parameters on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+
+            if (urlParams.has('price')) {
+                document.getElementById('searchPrice').value = urlParams.get('price');
+            }
+            if (urlParams.has('beds')) {
+                document.getElementById('searchRooms').value = urlParams.get('beds');
+            }
+
+            // Apply filters if any parameters exist
+            if (urlParams.toString()) {
+                filterProperties();
+            } else {
+                renderProperties(allProperties);
+            }
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

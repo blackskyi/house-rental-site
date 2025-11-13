@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - OG Properties</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="new-design">
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-text">OG PROPERTIES</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="availability.html">AVAILABILITY</a></li>
+                    <li><a href="services.html">SERVICES</a></li>
+                    <li><a href="residents.html">RESIDENTS</a></li>
+                    <li><a href="owners.html">OWNERS</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="contact.html" class="active">CONTACT</a></li>
+                </ul>
+                <button class="mobile-menu-toggle">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section style="background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%); padding: 80px 20px; text-align: center; color: white;">
+        <div class="container">
+            <h1 style="font-size: 3rem; margin-bottom: 15px; font-weight: 600;">Contact Us</h1>
+            <p style="font-size: 1.3rem; opacity: 0.9;">We're here to help. Reach out anytime!</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container" style="padding: 60px 20px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; margin-bottom: 60px;">
+            <!-- Contact Form -->
+            <div>
+                <h2 style="font-size: 2rem; color: var(--text-primary); margin-bottom: 20px;">Send Us a Message</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 30px; line-height: 1.7;">Have a question or need assistance? Fill out the form below and we'll get back to you as soon as possible.</p>
+
+                <form id="contactForm" style="background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject...</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="rental">Rental Inquiry</option>
+                            <option value="maintenance">Maintenance Request</option>
+                            <option value="owner">Property Owner Inquiry</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%;">Send Message</button>
+
+                    <div id="formMessage" style="display: none; margin-top: 20px; padding: 15px; border-radius: 6px;"></div>
+                </form>
+            </div>
+
+            <!-- Contact Information -->
+            <div>
+                <h2 style="font-size: 2rem; color: var(--text-primary); margin-bottom: 20px;">Get In Touch</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 30px; line-height: 1.7;">We're always available to answer your questions and provide assistance.</p>
+
+                <div style="background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 25px;">
+                    <div style="display: flex; gap: 20px; align-items: start; margin-bottom: 25px;">
+                        <div style="font-size: 2rem; color: var(--google-blue);">📧</div>
+                        <div>
+                            <h3 style="color: var(--text-primary); margin-bottom: 5px;">Email</h3>
+                            <a href="mailto:gokulprasannak@gmail.com" style="color: var(--google-blue); text-decoration: none;">gokulprasannak@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 20px; align-items: start; margin-bottom: 25px;">
+                        <div style="font-size: 2rem; color: var(--google-blue);">📍</div>
+                        <div>
+                            <h3 style="color: var(--text-primary); margin-bottom: 5px;">Location</h3>
+                            <p style="color: var(--text-secondary); margin: 0;">Near Campus</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 20px; align-items: start;">
+                        <div style="font-size: 2rem; color: var(--google-blue);">🕐</div>
+                        <div>
+                            <h3 style="color: var(--text-primary); margin-bottom: 5px;">Office Hours</h3>
+                            <p style="color: var(--text-secondary); margin: 0;">Monday - Friday: 9am - 6pm</p>
+                            <p style="color: var(--text-secondary); margin: 5px 0 0 0;">Saturday - Sunday: By appointment</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div style="background: var(--background-alt); padding: 25px; border-radius: 8px;">
+                    <h3 style="color: var(--text-primary); margin-bottom: 20px;">Quick Links</h3>
+                    <div style="display: grid; gap: 12px;">
+                        <a href="tenant-login.html" style="color: var(--google-blue); text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                            <span>→</span> Tenant Portal
+                        </a>
+                        <a href="owner-login.html" style="color: var(--google-blue); text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                            <span>→</span> Owner Portal
+                        </a>
+                        <a href="pay-rent.html" style="color: var(--google-blue); text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                            <span>→</span> Pay Rent Online
+                        </a>
+                        <a href="availability.html" style="color: var(--google-blue); text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                            <span>→</span> Browse Properties
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <section style="background: white; padding: 50px 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+                    <h3 style="color: var(--google-blue); margin-bottom: 10px;">How quickly can I expect a response?</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">We typically respond to all inquiries within 24 hours during business days. For urgent matters, please indicate "urgent" in your message subject.</p>
+                </div>
+
+                <div style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+                    <h3 style="color: var(--google-blue); margin-bottom: 10px;">Can I schedule a property viewing?</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">Yes! Simply mention your preferred viewing times in the contact form, or use the scheduling link on the individual property pages.</p>
+                </div>
+
+                <div style="margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid var(--border);">
+                    <h3 style="color: var(--google-blue); margin-bottom: 10px;">How do I report a maintenance issue?</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">Current tenants can submit maintenance requests through the tenant portal. For emergencies, please call immediately and select "maintenance" as your inquiry type.</p>
+                </div>
+
+                <div>
+                    <h3 style="color: var(--google-blue); margin-bottom: 10px;">Do you have properties available now?</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">Check our <a href="availability.html" style="color: var(--google-blue);">availability page</a> for current listings. Properties are updated regularly as they become available.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>OG PROPERTIES</h4>
+                    <p>Quality student housing near campus. Providing comfortable, affordable, and convenient living spaces for students.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="availability.html">Availability</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Portals</h4>
+                    <ul class="footer-links">
+                        <li><a href="tenant-login.html">Tenant Portal</a></li>
+                        <li><a href="owner-login.html">Owner Portal</a></li>
+                        <li><a href="pay-rent.html">Pay Rent Online</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul class="footer-contact">
+                        <li>📍 Near Campus</li>
+                        <li>📧 gokulprasannak@gmail.com</li>
+                        <li>🕐 Mon-Fri: 9am-6pm</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 OG Properties. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formMessage = document.getElementById('formMessage');
+            const submitBtn = this.querySelector('.btn-primary');
+
+            // Show loading state
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            // Simulate form submission (replace with actual API call)
+            setTimeout(() => {
+                formMessage.style.display = 'block';
+                formMessage.style.background = '#e6f4ea';
+                formMessage.style.color = '#34a853';
+                formMessage.style.borderLeft = '4px solid #34a853';
+                formMessage.textContent = 'Thank you! Your message has been sent. We\'ll get back to you within 24 hours.';
+
+                // Reset form
+                this.reset();
+                submitBtn.textContent = 'Send Message';
+                submitBtn.disabled = false;
+
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

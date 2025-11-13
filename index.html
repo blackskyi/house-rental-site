@@ -3,121 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Houses for Rent</title>
+    <title>OG Properties - Quality Student Housing</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <header>
+<body class="new-design">
+    <!-- Navigation -->
+    <nav class="main-nav">
         <div class="container">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-                <div>
-                    <h1>Available Rentals</h1>
-                    <p class="subtitle">Find your perfect home</p>
-                </div>
-                <a href="pay-rent.html" style="background: linear-gradient(135deg, #4285f4 0%, #34a853 100%); color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 500; box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3); transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(66, 133, 244, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(66, 133, 244, 0.3)';">
-                    💳 Pay Rent Online
+            <div class="nav-content">
+                <a href="index.html" class="logo">
+                    <span class="logo-text">OG PROPERTIES</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">HOME</a></li>
+                    <li><a href="availability.html">AVAILABILITY</a></li>
+                    <li><a href="services.html">SERVICES</a></li>
+                    <li><a href="residents.html">RESIDENTS</a></li>
+                    <li><a href="owners.html">OWNERS</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+                <button class="mobile-menu-toggle">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Search -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="hero-title">WELCOME TO OG PROPERTIES</h1>
+            <p class="hero-subtitle">Quality Student Housing Near Campus</p>
+
+            <!-- Search Form -->
+            <div class="search-form-container">
+                <form class="property-search-form" id="heroSearchForm">
+                    <div class="search-field">
+                        <label>City</label>
+                        <input type="text" placeholder="Enter city" id="searchCity" value="">
+                    </div>
+                    <div class="search-field">
+                        <label>Price</label>
+                        <select id="searchPrice">
+                            <option value="">Any Price</option>
+                            <option value="700">Under $700</option>
+                            <option value="1000">Under $1000</option>
+                            <option value="1200">Under $1200</option>
+                        </select>
+                    </div>
+                    <div class="search-field">
+                        <label>Beds</label>
+                        <select id="searchBeds">
+                            <option value="">Any</option>
+                            <option value="3">3 Rooms</option>
+                            <option value="5">5 Rooms</option>
+                        </select>
+                    </div>
+                    <div class="search-field">
+                        <label>Baths</label>
+                        <select id="searchBaths">
+                            <option value="">Any</option>
+                            <option value="2">2 Baths</option>
+                            <option value="3">3 Baths</option>
+                        </select>
+                    </div>
+                    <button type="button" class="search-btn" onclick="performSearch()">Search</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portal Cards Section -->
+    <section class="portals-section">
+        <div class="container">
+            <div class="portal-cards-grid">
+                <!-- Availability Card -->
+                <a href="availability.html" class="portal-card">
+                    <div class="portal-icon">🏠</div>
+                    <h3>Availability</h3>
+                    <p>Browse our current available properties and find your perfect home</p>
+                    <span class="portal-link-arrow">→</span>
+                </a>
+
+                <!-- Tenant Portal Card -->
+                <a href="tenant-login.html" class="portal-card">
+                    <div class="portal-icon">👤</div>
+                    <h3>Tenant Portal</h3>
+                    <p>Pay rent, submit maintenance requests, and manage your account</p>
+                    <span class="portal-link-arrow">→</span>
+                </a>
+
+                <!-- Owner Portal Card -->
+                <a href="owner-login.html" class="portal-card">
+                    <div class="portal-icon">🔑</div>
+                    <h3>Owner Portal</h3>
+                    <p>Manage your properties, view reports, and track payments</p>
+                    <span class="portal-link-arrow">→</span>
+                </a>
+
+                <!-- Contact Card -->
+                <a href="contact.html" class="portal-card">
+                    <div class="portal-icon">📞</div>
+                    <h3>Contact Us</h3>
+                    <p>Get in touch with our team for questions or assistance</p>
+                    <span class="portal-link-arrow">→</span>
                 </a>
             </div>
         </div>
-    </header>
+    </section>
 
-    <main class="container">
-        <!-- Search & Filter Section -->
-        <section style="background: white; padding: 30px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            <h2>Find Your Perfect Home</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
-                <div class="form-group">
-                    <label for="searchPrice">Max Price</label>
-                    <select id="searchPrice" onchange="filterProperties()" style="width: 100%; padding: 10px; border: 1px solid #dadce0; border-radius: 4px;">
-                        <option value="">Any Price</option>
-                        <option value="700">Under $700</option>
-                        <option value="1000">Under $1000</option>
-                        <option value="1200">Under $1200</option>
-                    </select>
+    <!-- Services Section -->
+    <section class="services-preview">
+        <div class="container">
+            <h2 class="section-title">Our Management Services</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">🏘️</div>
+                    <h3>Property Management</h3>
+                    <p>Full-service property management for residential rentals</p>
                 </div>
-                <div class="form-group">
-                    <label for="searchRooms">Bedrooms</label>
-                    <select id="searchRooms" onchange="filterProperties()" style="width: 100%; padding: 10px; border: 1px solid #dadce0; border-radius: 4px;">
-                        <option value="">Any</option>
-                        <option value="3">3 Rooms</option>
-                        <option value="5">5 Rooms</option>
-                    </select>
+                <div class="service-item">
+                    <div class="service-icon">🔧</div>
+                    <h3>Maintenance</h3>
+                    <p>24/7 maintenance support for all our properties</p>
                 </div>
-                <div class="form-group">
-                    <label for="searchAmenities">Amenities</label>
-                    <select id="searchAmenities" onchange="filterProperties()" style="width: 100%; padding: 10px; border: 1px solid #dadce0; border-radius: 4px;">
-                        <option value="">Any</option>
-                        <option value="Air-Conditioned">Air-Conditioned</option>
-                        <option value="Free Laundry">Free Laundry</option>
-                        <option value="Parking">Parking</option>
-                    </select>
+                <div class="service-item">
+                    <div class="service-icon">💳</div>
+                    <h3>Rent Collection</h3>
+                    <p>Secure online rent payment processing</p>
                 </div>
-                <div class="form-group">
-                    <button onclick="resetFilters()" style="width: 100%; padding: 10px; background: #5f6368; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 24px;">Reset Filters</button>
+                <div class="service-item">
+                    <div class="service-icon">📋</div>
+                    <h3>Tenant Screening</h3>
+                    <p>Thorough background and credit checks</p>
                 </div>
             </div>
-        </section>
-
-        <!-- All Property Owners Section -->
-        <section style="background: white; padding: 30px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            <h2>Browse by Property Owner</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
-                <!-- Owner Card: Sara -->
-                <a href="owner-sara.html" style="text-decoration: none; color: inherit;">
-                    <div style="border: 2px solid #dadce0; border-radius: 8px; padding: 20px; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
-                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #4285f4 0%, #34a853 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 700;">
-                                S
-                            </div>
-                            <div>
-                                <h3 style="margin: 0; color: #4285f4;">Sara's Properties</h3>
-                                <p style="margin: 5px 0 0 0; font-size: 0.85rem; color: #5f6368;">2 Active Listings</p>
-                            </div>
-                        </div>
-                        <p style="font-size: 0.9rem; color: #5f6368; line-height: 1.5;">
-                            Quality student housing near campus with excellent amenities
-                        </p>
-                        <div style="margin-top: 15px; font-size: 0.85rem; color: #34a853;">
-                            View All Properties →
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Add Property Owner Card -->
-                <a href="owner-signup.html" style="text-decoration: none; color: inherit;">
-                    <div style="border: 2px dashed #dadce0; border-radius: 8px; padding: 20px; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; text-align: center; display: flex; flex-direction: column; justify-content: center; min-height: 150px;" onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='#4285f4';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='#dadce0';">
-                        <div style="font-size: 3rem; color: #4285f4; margin-bottom: 10px;">+</div>
-                        <h3 style="margin: 0 0 10px 0; color: #4285f4;">List Your Properties</h3>
-                        <p style="margin: 0; font-size: 0.9rem; color: #5f6368;">
-                            Join our platform and reach thousands of students
-                        </p>
-                    </div>
-                </a>
+            <div class="services-cta">
+                <a href="services.html" class="btn-primary">View All Services</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- All Properties Section -->
-        <section class="properties-list">
-            <h2>All Available Properties</h2>
-            <div id="propertiesContainer">
+    <!-- Newest Listings Section -->
+    <section class="newest-listings">
+        <div class="container">
+            <h2 class="section-title">Newest Listings</h2>
+            <div class="properties-grid" id="newestListingsContainer">
                 <!-- Properties will be dynamically loaded here -->
             </div>
-        </section>
+            <div class="view-all-cta">
+                <a href="availability.html" class="btn-secondary">View All Properties</a>
+            </div>
+        </div>
+    </section>
 
-        <!-- Platform Contact (Not Property Owner) -->
-        <section class="contact">
-            <h2>Questions About Listings?</h2>
-            <p>Submit an application through any property page and we'll connect you with the property owner.</p>
-            <p class="contact-note">All applications are processed through our platform to ensure your security.</p>
-        </section>
-    </main>
-
-    <footer>
+    <!-- Footer -->
+    <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2025 Campus Rentals. All rights reserved.</p>
+            <div class="footer-grid">
+                <!-- Company Info -->
+                <div class="footer-column">
+                    <h4>OG PROPERTIES</h4>
+                    <p>Quality student housing near campus. Providing comfortable, affordable, and convenient living spaces for students.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="availability.html">Availability</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Portals -->
+                <div class="footer-column">
+                    <h4>Portals</h4>
+                    <ul class="footer-links">
+                        <li><a href="tenant-login.html">Tenant Portal</a></li>
+                        <li><a href="owner-login.html">Owner Portal</a></li>
+                        <li><a href="pay-rent.html">Pay Rent Online</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul class="footer-contact">
+                        <li>📍 Near Campus</li>
+                        <li>📧 gokulprasannak@gmail.com</li>
+                        <li>🕐 Mon-Fri: 9am-6pm</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 OG Properties. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
@@ -132,10 +220,12 @@
                 sharedRent: 600,
                 privateRent: 1150,
                 rooms: 3,
+                baths: 2,
                 availableRooms: 3,
                 availableFrom: 'Mid December',
                 features: ['Free Laundry', 'Parking', 'Backyard', '1 Block from Campus'],
-                link: 'property-1.html'
+                link: 'property-1.html',
+                city: 'Campus Area'
             },
             {
                 id: 'property-2',
@@ -145,96 +235,75 @@
                 sharedRent: 600,
                 privateRent: 1150,
                 rooms: 5,
+                baths: 3,
                 availableRooms: 2,
                 availableFrom: 'Mid December',
                 features: ['Air-Conditioned', 'Free Laundry', 'Parking', 'Backyard with Gazebo'],
-                link: 'property-2.html'
+                link: 'property-2.html',
+                city: 'Campus Area'
             }
         ];
 
-        function renderProperties(properties) {
-            const container = document.getElementById('propertiesContainer');
-
-            if (properties.length === 0) {
-                container.innerHTML = '<div style="text-align: center; padding: 40px; color: #5f6368;"><p>No properties match your filters. Try adjusting your search criteria.</p></div>';
-                return;
-            }
-
-            container.innerHTML = properties.map(prop => `
-                <div class="property-card" data-property-id="${prop.id}">
-                    <div class="property-card-content">
-                        <div class="property-info">
-                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
-                                <h3>${prop.title}</h3>
-                                <a href="owner-${prop.owner.toLowerCase()}.html" style="font-size: 0.85rem; color: #4285f4; text-decoration: none;">by ${prop.owner}</a>
-                            </div>
-                            <p class="property-description">${prop.description}</p>
-
-                            <div class="property-highlights">
-                                <div class="highlight-item">
-                                    <span class="highlight-label">Shared Spot:</span>
-                                    <span class="highlight-value">$${prop.sharedRent}/month</span>
-                                </div>
-                                <div class="highlight-item">
-                                    <span class="highlight-label">Private Room:</span>
-                                    <span class="highlight-value">$${prop.privateRent}/month</span>
-                                </div>
-                                <div class="highlight-item">
-                                    <span class="highlight-label">Type:</span>
-                                    <span class="highlight-value">${prop.rooms} Rooms</span>
-                                </div>
-                                <div class="highlight-item">
-                                    <span class="highlight-label">Available:</span>
-                                    <span class="highlight-value">${prop.availableFrom}</span>
-                                </div>
-                                <div class="highlight-item">
-                                    <span class="highlight-label">Rooms Available:</span>
-                                    <span class="highlight-value">${prop.availableRooms} of ${prop.rooms}</span>
-                                </div>
-                            </div>
-
-                            <div class="property-features">
-                                ${prop.features.map(f => `<span class="feature-tag">${f}</span>`).join('')}
-                            </div>
-
-                            <a href="${prop.link}" class="view-details-btn">View Details & Apply</a>
+        // Render newest listings
+        function renderNewestListings() {
+            const container = document.getElementById('newestListingsContainer');
+            container.innerHTML = allProperties.map(prop => `
+                <div class="property-card-modern">
+                    <div class="property-header">
+                        <h3>${prop.title}</h3>
+                        <div class="property-badge">${prop.availableRooms} Available</div>
+                    </div>
+                    <p class="property-description">${prop.description}</p>
+                    <div class="property-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">🛏️</span>
+                            <span class="stat-text">${prop.rooms} Rooms</span>
                         </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">🚿</span>
+                            <span class="stat-text">${prop.baths} Baths</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">💰</span>
+                            <span class="stat-text">From $${prop.sharedRent}/mo</span>
+                        </div>
+                    </div>
+                    <div class="property-features-list">
+                        ${prop.features.slice(0, 3).map(f => `<span class="feature-chip">${f}</span>`).join('')}
+                    </div>
+                    <div class="property-footer">
+                        <span class="available-date">Available: ${prop.availableFrom}</span>
+                        <a href="${prop.link}" class="view-btn">View Details</a>
                     </div>
                 </div>
             `).join('');
         }
 
-        function filterProperties() {
+        // Search functionality
+        function performSearch() {
+            const city = document.getElementById('searchCity').value.toLowerCase();
             const maxPrice = document.getElementById('searchPrice').value;
-            const rooms = document.getElementById('searchRooms').value;
-            const amenity = document.getElementById('searchAmenities').value;
+            const beds = document.getElementById('searchBeds').value;
+            const baths = document.getElementById('searchBaths').value;
 
-            let filtered = allProperties;
+            // Build query string
+            const params = new URLSearchParams();
+            if (city) params.append('city', city);
+            if (maxPrice) params.append('price', maxPrice);
+            if (beds) params.append('beds', beds);
+            if (baths) params.append('baths', baths);
 
-            if (maxPrice) {
-                filtered = filtered.filter(p => p.sharedRent <= parseInt(maxPrice));
-            }
-
-            if (rooms) {
-                filtered = filtered.filter(p => p.rooms == parseInt(rooms));
-            }
-
-            if (amenity) {
-                filtered = filtered.filter(p => p.features.includes(amenity));
-            }
-
-            renderProperties(filtered);
+            // Redirect to availability page with search params
+            window.location.href = `availability.html${params.toString() ? '?' + params.toString() : ''}`;
         }
 
-        function resetFilters() {
-            document.getElementById('searchPrice').value = '';
-            document.getElementById('searchRooms').value = '';
-            document.getElementById('searchAmenities').value = '';
-            renderProperties(allProperties);
-        }
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
 
-        // Initial render
-        renderProperties(allProperties);
+        // Initialize
+        renderNewestListings();
     </script>
 </body>
 </html>
