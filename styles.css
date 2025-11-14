@@ -1,22 +1,22 @@
 /* Professional Color Palette */
 :root {
-    --primary: #8B6F47;
-    --primary-dark: #6B5635;
-    --primary-light: #A08968;
-    --secondary: #D4AF37;
-    --secondary-dark: #B8941F;
-    --accent: #C19A6B;
-    --text-primary: #2C2416;
+    --primary: #4285F4;
+    --primary-dark: #1a73e8;
+    --primary-light: #669df6;
+    --secondary: #34A853;
+    --secondary-dark: #188038;
+    --accent: #FBBC04;
+    --text-primary: #1f2937;
     --text-secondary: #6b7280;
     --text-light: #9ca3af;
     --border: #e5e7eb;
     --border-light: #f3f4f6;
     --background: #ffffff;
     --background-alt: #f9fafb;
-    --background-dark: #3D3026;
-    --success: #10b981;
-    --error: #ef4444;
-    --warning: #f59e0b;
+    --background-dark: #202124;
+    --success: #34A853;
+    --error: #EA4335;
+    --warning: #FBBC04;
 }
 
 * {
@@ -682,7 +682,8 @@ footer p {
     text-align: center;
     position: relative;
     overflow: hidden;
-    min-height: 600px;
+    min-height: 650px;
+    width: 100%;
 }
 
 /* Hero Carousel Slides */
@@ -711,24 +712,13 @@ footer p {
     opacity: 1;
 }
 
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.2);
-    z-index: 0;
-}
-
 .hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
     z-index: 1;
 }
 
