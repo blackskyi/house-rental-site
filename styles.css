@@ -677,13 +677,38 @@ footer p {
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(rgba(26, 35, 126, 0.85), rgba(13, 71, 161, 0.85)),
-                url('assets/images/property-2/house-front/1.jpg') center/cover no-repeat;
     color: white;
     padding: 120px 20px 140px;
     text-align: center;
     position: relative;
     overflow: hidden;
+    min-height: 600px;
+}
+
+/* Hero Carousel Slides */
+.hero-slides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.hero-slide.active {
+    opacity: 1;
 }
 
 .hero-section::before {
@@ -697,9 +722,52 @@ footer p {
     z-index: 0;
 }
 
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(26, 35, 126, 0.75), rgba(13, 71, 161, 0.75));
+    z-index: 1;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 3;
+}
+
+.carousel-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.carousel-indicator:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+}
+
+.carousel-indicator.active {
+    background: white;
+    width: 32px;
+    border-radius: 6px;
+}
+
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .hero-title {

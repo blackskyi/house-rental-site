@@ -30,8 +30,19 @@
     </nav>
 
     <!-- Hero Section with Search -->
-    <section class="hero-section">
+    <section class="hero-section" id="heroSection">
+        <div class="hero-slides">
+            <!-- Slide 1 - LA Themed -->
+            <div class="hero-slide active" style="background-image: url('assets/images/property-2/house-front/1.jpg')"></div>
+            <!-- Slide 2 - Property -->
+            <div class="hero-slide" style="background-image: url('assets/images/property-2/backyard/1.jpg')"></div>
+            <!-- Slide 3 - Property -->
+            <div class="hero-slide" style="background-image: url('assets/images/property-2/kitchen/1.jpg')"></div>
+            <!-- Add more slides with Indian-themed images here -->
+            <!-- Example: <div class="hero-slide" style="background-image: url('assets/images/hero-carousel/indian-campus.jpg')"></div> -->
+        </div>
         <div class="hero-overlay"></div>
+        <div class="carousel-indicators" id="carouselIndicators"></div>
         <div class="container hero-content">
             <h1 class="hero-title">WELCOME TO OG PROPERTIES</h1>
             <p class="hero-subtitle">Quality Student Housing Near Campus</p>
@@ -307,6 +318,44 @@
 
         // Initialize
         renderNewestListings();
+
+        // Hero Carousel Functionality
+        function initHeroCarousel() {
+            const slides = document.querySelectorAll('.hero-slide');
+            const indicatorsContainer = document.getElementById('carouselIndicators');
+            let currentSlide = 0;
+            const slideInterval = 5000; // 5 seconds per slide
+
+            // Create indicators
+            slides.forEach((_, index) => {
+                const indicator = document.createElement('button');
+                indicator.classList.add('carousel-indicator');
+                if (index === 0) indicator.classList.add('active');
+                indicator.addEventListener('click', () => goToSlide(index));
+                indicatorsContainer.appendChild(indicator);
+            });
+
+            const indicators = document.querySelectorAll('.carousel-indicator');
+
+            function goToSlide(n) {
+                slides[currentSlide].classList.remove('active');
+                indicators[currentSlide].classList.remove('active');
+                currentSlide = n;
+                slides[currentSlide].classList.add('active');
+                indicators[currentSlide].classList.add('active');
+            }
+
+            function nextSlide() {
+                let next = (currentSlide + 1) % slides.length;
+                goToSlide(next);
+            }
+
+            // Auto-advance slides
+            setInterval(nextSlide, slideInterval);
+        }
+
+        // Initialize carousel
+        initHeroCarousel();
     </script>
 </body>
 </html>
