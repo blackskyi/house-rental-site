@@ -1,19 +1,19 @@
 /* Professional Color Palette */
 :root {
-    --primary: #2563eb;
-    --primary-dark: #1e40af;
-    --primary-light: #3b82f6;
-    --secondary: #10b981;
-    --secondary-dark: #059669;
-    --accent: #f59e0b;
-    --text-primary: #1f2937;
+    --primary: #8B6F47;
+    --primary-dark: #6B5635;
+    --primary-light: #A08968;
+    --secondary: #D4AF37;
+    --secondary-dark: #B8941F;
+    --accent: #C19A6B;
+    --text-primary: #2C2416;
     --text-secondary: #6b7280;
     --text-light: #9ca3af;
     --border: #e5e7eb;
     --border-light: #f3f4f6;
     --background: #ffffff;
     --background-alt: #f9fafb;
-    --background-dark: #111827;
+    --background-dark: #3D3026;
     --success: #10b981;
     --error: #ef4444;
     --warning: #f59e0b;
