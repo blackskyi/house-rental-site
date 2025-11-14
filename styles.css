@@ -769,19 +769,19 @@ footer p {
 
 /* Google Logo Colors for Text */
 .google-blue {
-    color: #4285F4;
+    color: #4285F4 !important;
 }
 
 .google-red {
-    color: #EA4335;
+    color: #EA4335 !important;
 }
 
 .google-yellow {
-    color: #FBBC04;
+    color: #FBBC04 !important;
 }
 
 .google-green {
-    color: #34A853;
+    color: #34A853 !important;
 }
 
 .hero-subtitle {
