@@ -49,7 +49,7 @@ Owner receives $1,056 (transferred via Stripe Connect)
 
 1. **Create Stripe Account**
    - Go to: https://dashboard.stripe.com/register
-   - Use your business email: gokulprasannak@gmail.com
+   - Use your business email: support@og-rooms.com
    - Select "I'm creating a platform or marketplace"
    - Complete business verification
 
@@ -373,7 +373,7 @@ If you get stuck:
 
 1. **Create Stripe Account NOW**
    - Go to https://dashboard.stripe.com/register
-   - Use: gokulprasannak@gmail.com (or LLC email if you have it)
+   - Use: support@og-rooms.com (or LLC email if you have it)
 
 2. **Send Me Your API Keys**
    - Publishable key (pk_test_...)

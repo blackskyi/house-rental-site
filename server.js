@@ -40,7 +40,7 @@ app.use(express.static('.')); // Serve static files
 const connectedOwners = {
     'sara-001': {
         stripeAccountId: 'acct_EXAMPLE', // Replace with real Stripe Connected Account ID
-        email: 'gokulprasannak@gmail.com',
+        email: 'support@og-rooms.com',
         name: 'Sara'
     }
 };

@@ -9,7 +9,7 @@
 1. Go to: **https://dashboard.stripe.com/register**
 
 2. Fill in the form:
-   - Email: `gokulprasannak@gmail.com` (or your LLC email)
+   - Email: `support@og-rooms.com` (or your LLC email)
    - Full name: Your name
    - Country: United States
    - Password: (create a strong password)
@@ -64,7 +64,7 @@
 3. Fill in Connect settings:
    - **Platform name:** Campus Rentals
    - **Platform website:** (your Railway URL)
-   - **Support email:** gokulprasannak@gmail.com
+   - **Support email:** support@og-rooms.com
    - **Account type:** Standard (recommended)
 
 4. Click "Save"

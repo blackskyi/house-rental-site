@@ -162,7 +162,7 @@ Owner agrees NOT to:
 
 **Email Flow:**
 ```
-Applicant → Platform Email (gokulprasannak@gmail.com)
+Applicant → Platform Email (support@og-rooms.com)
     ↓
 Platform → Owner Email (FROM: platform, with tracking ID)
     ↓

@@ -16,7 +16,7 @@
 ```
 Go to: https://dashboard.stripe.com/register
 Select: "I'm creating a platform or marketplace"
-Email: gokulprasannak@gmail.com
+Email: support@og-rooms.com
 ```
 
 ### 2. Get Your Keys (2 min)

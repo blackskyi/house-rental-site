@@ -17,7 +17,7 @@
  */
 
 // CONFIGURATION
-const PLATFORM_EMAIL = 'gokulprasannak@gmail.com'; // Your platform email
+const PLATFORM_EMAIL = 'support@og-rooms.com'; // Your platform email
 const PLATFORM_NAME = 'Campus Rentals'; // Your platform name
 const COMMISSION_RATE = '12%'; // Your commission rate
 

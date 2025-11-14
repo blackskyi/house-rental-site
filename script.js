@@ -1,7 +1,7 @@
 // Configuration
 const CONFIG = {
     APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxg-tNtejAoXsJPhMVqDjlP95dRKbIZ50HEyZzCJLgr0V5JUmeXZ5c6EEqP0okUl9Pf/exec',
-    RECIPIENT_EMAIL: 'gokulprasannak@gmail.com'
+    RECIPIENT_EMAIL: 'support@og-rooms.com'
 };
 
 // Load images from assets/images folder

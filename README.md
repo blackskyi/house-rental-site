@@ -139,11 +139,11 @@ Add/remove fields in `index.html` (section: application-form) and update:
 
 1. Open `index.html` in a browser locally
 2. Fill out the form
-3. Check that PDF is sent to gokulprasannak@gmail.com
+3. Check that PDF is sent to support@og-rooms.com
 
 ## Support
 
-For issues or questions, contact: gokulprasannak@gmail.com
+For issues or questions, contact: support@og-rooms.com
 
 ## License
 

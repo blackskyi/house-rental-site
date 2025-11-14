@@ -209,7 +209,7 @@ function testForm() {
     references: "Jane Smith, 555-123-4567",
     message: "Looking forward to renting this property",
     submittedAt: new Date().toLocaleString(),
-    recipientEmail: "gokulprasannak@gmail.com"
+    recipientEmail: "support@og-rooms.com"
   };
 
   const pdfBlob = createPDF(testData);
