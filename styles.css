@@ -728,7 +728,7 @@ footer p {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(rgba(26, 35, 126, 0.75), rgba(13, 71, 161, 0.75));
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
     z-index: 1;
 }
 
