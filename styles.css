@@ -767,20 +767,20 @@ footer p {
     letter-spacing: 2px;
 }
 
-/* Google Logo Colors for Text */
-.google-blue {
+/* Google Logo Colors for Icons */
+.icon-blue i {
     color: #4285F4 !important;
 }
 
-.google-red {
+.icon-red i {
     color: #EA4335 !important;
 }
 
-.google-yellow {
+.icon-yellow i {
     color: #FBBC04 !important;
 }
 
-.google-green {
+.icon-green i {
     color: #34A853 !important;
 }
 
