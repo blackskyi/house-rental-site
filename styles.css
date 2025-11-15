@@ -1,8 +1,8 @@
 /* Professional Color Palette */
 :root {
-    --primary: #4285F4;
-    --primary-dark: #1a73e8;
-    --primary-light: #669df6;
+    --primary: black;
+    --primary-dark: black;
+    --primary-light: #333333;
     --secondary: #34A853;
     --secondary-dark: #188038;
     --accent: #FBBC04;
