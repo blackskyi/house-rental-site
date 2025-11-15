@@ -638,7 +638,7 @@ footer p {
 .logo-text {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary);
+    color: black;
     letter-spacing: 0.5px;
 }
 
@@ -662,8 +662,8 @@ footer p {
 
 .nav-links a:hover,
 .nav-links a.active {
-    color: var(--primary);
-    border-bottom-color: var(--primary);
+    color: black;
+    border-bottom-color: black;
 }
 
 .mobile-menu-toggle {
@@ -769,7 +769,7 @@ footer p {
 
 /* Google Logo Colors for Icons */
 .icon-blue i {
-    color: #4285F4 !important;
+    color: black !important;
 }
 
 .icon-red i {
@@ -909,7 +909,7 @@ footer p {
 .portal-icon {
     font-size: 3rem;
     margin-bottom: 15px;
-    color: var(--primary);
+    color: black;
 }
 
 .portal-icon i {
@@ -919,7 +919,7 @@ footer p {
 .service-icon {
     font-size: 3rem;
     margin-bottom: 15px;
-    color: var(--primary);
+    color: black;
 }
 
 .service-icon i {
@@ -1061,7 +1061,7 @@ footer p {
 }
 
 .property-header h3 {
-    color: var(--primary);
+    color: black;
     font-size: 1.3rem;
     margin: 0;
     font-weight: 600;

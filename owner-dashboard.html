@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Owner Dashboard - Campus Rentals</title>
-    <link rel="stylesheet" href="styles.css?v=6">
+    <link rel="stylesheet" href="styles.css?v=7">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -47,7 +47,7 @@
         .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #4285f4;
+            color: black;
             margin: 10px 0;
         }
         .stat-label {
@@ -122,7 +122,7 @@
             margin-bottom: 15px;
         }
         .property-card-dashboard h3 {
-            color: #4285f4;
+            color: black;
             margin-bottom: 10px;
         }
         .add-property-btn {
@@ -421,7 +421,7 @@
                         <span class="status-badge ${prop.active ? 'status-approved' : 'status-rejected'}">
                             ${prop.active ? 'Active' : 'Inactive'}
                         </span>
-                        <a href="${prop.id}.html" target="_blank" style="margin-left: 10px; color: #4285f4; text-decoration: none;">View Live →</a>
+                        <a href="${prop.id}.html" target="_blank" style="margin-left: 10px; color: black; text-decoration: none;">View Live →</a>
                     </div>
                 </div>
             `).join('');
@@ -541,7 +541,7 @@
 
             const content = `
                 <div style="margin-bottom: 30px;">
-                    <h3 style="color: #4285f4; margin-bottom: 15px;">Room Availability</h3>
+                    <h3 style="color: black; margin-bottom: 15px;">Room Availability</h3>
                     <p style="font-size: 0.9rem; color: #5f6368; margin-bottom: 20px;">
                         Toggle room availability on/off. When all rooms are occupied, the property will be automatically marked as unavailable.
                     </p>
@@ -565,7 +565,7 @@
                 </div>
 
                 <div style="margin-bottom: 30px;">
-                    <h3 style="color: #4285f4; margin-bottom: 15px;">Rental Rates</h3>
+                    <h3 style="color: black; margin-bottom: 15px;">Rental Rates</h3>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                         <div class="form-group">
                             <label>Shared Spot Rate ($/month)</label>
@@ -579,7 +579,7 @@
                 </div>
 
                 <div style="margin-bottom: 30px;">
-                    <h3 style="color: #4285f4; margin-bottom: 15px;">Photo Management</h3>
+                    <h3 style="color: black; margin-bottom: 15px;">Photo Management</h3>
                     <p style="font-size: 0.9rem; color: #5f6368; margin-bottom: 15px;">
                         Upload photos for your property. Supported formats: JPG, PNG. Max 10MB per photo.
                     </p>
@@ -775,7 +775,7 @@
                             ${prop.active ? 'Active' : 'Inactive'}
                         </span>
                         ${prop.photos.length > 0 ? `<span style="font-size: 0.85rem; color: #5f6368;">📸 ${prop.photos.length} photos</span>` : ''}
-                        <a href="${prop.id}.html" target="_blank" style="margin-left: auto; color: #4285f4; text-decoration: none; font-size: 0.9rem;">View Live →</a>
+                        <a href="${prop.id}.html" target="_blank" style="margin-left: auto; color: black; text-decoration: none; font-size: 0.9rem;">View Live →</a>
                     </div>
                 </div>
             `).join('');
